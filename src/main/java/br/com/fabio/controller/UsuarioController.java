@@ -1,7 +1,6 @@
 package br.com.fabio.controller;
 
 import br.com.fabio.entity.Perfil;
-import br.com.fabio.entity.Requerente;
 import br.com.fabio.entity.Usuario;
 import br.com.fabio.propertyEditor.PerfilPropertyEditor;
 import br.com.fabio.repository.PerfilRepository;
