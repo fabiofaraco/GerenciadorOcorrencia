@@ -1,0 +1,45 @@
+h1{
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
+	text-align: center;
+	color: #337ab7;
+}
+
+.btn-info{
+	background-color: #B78433;
+	border-color: #6A4F23;
+}
+
+.btn-info:hover{
+	background-color: #6A4F23;
+	border-color: #6A4F23;
+}
+
+.btn-gerar-certidao{
+	margin-top: 30px;
+}
+
+.btn-primary{
+	background-color: #337ab7;
+}
+
+.btn-primary:hover{
+	background-color: #13426A;
+	border-color: #13426A;
+}
+
+.login-wrapper{
+	padding-top: 20px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+}
+
+@media (min-width: 768px){
+	h1{
+		font-size: 2.3em;
+	}
+
+	.btn-info{
+		margin-top: 30px;
+	}
+}
