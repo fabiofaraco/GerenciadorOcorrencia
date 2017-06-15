@@ -34,9 +34,8 @@ public class Requerente implements Serializable {
     @Column(name = "dt_requisicao")
     private Date dataRequisicao = new Date();
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "dt_nascimento")
-    private Date dataNascimento;
+    private String dataNascimento;
 
     /**
      * @return the id
@@ -139,14 +138,14 @@ public class Requerente implements Serializable {
     /**
      * @return the dataNascimento
      */
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
     /**
      * @param dataNascimento the dataNascimento to set
      */
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

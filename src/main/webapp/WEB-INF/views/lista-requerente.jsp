@@ -49,80 +49,72 @@
                         <a href="javascript:void(0);" class="list-group-item list-group-style">
                             <div class="row">
                                 <div class="col-sm-12 col-md-10">
-                                    <div class="form-group">
+                                    <div class="row">
                                         <div class="col-xs-12">
                                             <h4 class="list-group-item-heading titulo">${requerente.nome}</h4>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="row">
                                         <label class="titulo col-xs-4 col-sm-2">CPF:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">${requerente.cpf}</label>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
                                         <label class="titulo col-xs-4 col-sm-2">Nascimento:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao lbl-formata-data">${requerente.dataNascimento}</label>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="row">
                                         <label class="titulo col-xs-4 col-sm-2">E-mail:</label>
                                         <div class="col-xs-8 col-sm-10">
                                             <label class="descricao">${requerente.email}</label>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="titulo col-xs-4 col-sm-2">Endereço:</label>
-                                        <div class="col-xs-8 col-sm-10">
+                                    <div class="row">
+                                        <label class="titulo col-xs-4 col-md-2">Endereço: </label>
+                                        <div class="col-xs-8 col-md-4">
                                             <label class="descricao">
                                                 ${requerente.endereco.logradouro},
                                                 ${requerente.endereco.complemento}
                                             </label>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="titulo col-xs-4 col-sm-2">Bairro:</label>
-                                        <div class="col-xs-8 col-sm-10">
+                                        <label class="titulo col-xs-4 col-md-2">Bairro: </label>
+                                        <div class="col-xs-8 col-md-4">
                                             <label class="descricao">
                                                 ${requerente.endereco.bairro}
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="titulo col-xs-4 col-sm-2">Cidade:</label>
-                                        <div class="col-xs-8 col-sm-4">
+                                    <div class="row">
+                                        <label class="titulo col-xs-4 col-md-2">Cidade: </label>
+                                        <div class="col-xs-8 col-md-4">
                                             <label class="descricao">
                                                 ${requerente.endereco.cidade.nome}
                                             </label>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="titulo col-xs-4 col-sm-2">Estado:</label>
-                                        <div class="col-xs-8 col-sm-4">
+                                        <label class="titulo col-xs-4 col-md-2">Estado: </label>
+                                        <div class="col-xs-8 col-md-4">
                                             <label class="descricao">
-                                                ${requerente.endereco.cidade.estado.sigla} 
+                                                ${requerente.endereco.cidade.estado.sigla}
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="row">
                                         <label class="titulo col-xs-4 col-sm-2">Tel Res:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">
                                                 ${requerente.telefone.residencial} 
                                             </label>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
                                         <label class="titulo col-xs-4 col-sm-2">Tel Cel:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">

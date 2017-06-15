@@ -16,7 +16,6 @@ br\com\fabio\entity\Endereco.class
 br\com\fabio\entity\Ocorrencia.class
 br\com\fabio\repository\PerfilRepository.class
 br\com\fabio\controller\OcorrenciaController.class
-br\com\fabio\service\OcorrenciaService.class
 br\com\fabio\entity\NaturezaEvento.class
 br\com\fabio\repository\EstadoRepository.class
 br\com\fabio\propertyEditor\CidadePropertyEditor.class

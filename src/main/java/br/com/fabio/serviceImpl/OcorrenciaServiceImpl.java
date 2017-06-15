@@ -1,4 +1,4 @@
-package br.com.fabio.service;
+package br.com.fabio.serviceImpl;
 
 import br.com.fabio.entity.Cidade;
 import br.com.fabio.entity.Estado;
@@ -15,7 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OcorrenciaService {
+public class OcorrenciaServiceImpl {
 
     @Autowired
     private OcorrenciaRepository ocorrenciaRepository;

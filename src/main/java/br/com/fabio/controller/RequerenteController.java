@@ -8,6 +8,7 @@ import br.com.fabio.propertyEditor.EstadoPropertyEditor;
 import br.com.fabio.repository.CidadeRepository;
 import br.com.fabio.repository.EstadoRepository;
 import br.com.fabio.repository.RequerenteRepository;
+import br.com.fabio.service.RequerenteService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.text.SimpleDateFormat;
@@ -28,13 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class RequerenteController {
 
     @Autowired
-    private RequerenteRepository requerenteRepository;
-
-    @Autowired
-    private EstadoRepository estadoRepository;
-
-    @Autowired
-    private CidadeRepository cidadeRepository;
+    private RequerenteService service;
 
     @InitBinder
     public void customizeBinding(WebDataBinder binder) {
@@ -59,19 +54,18 @@ public class RequerenteController {
 
     @RequestMapping("/cadastro")
     public String getCadastro(Requerente requerente, Model model) {
-        model.addAttribute("estados", estadoRepository
-                .findAll(new Sort(Sort.Direction.ASC, "sigla")));
+
+        model.addAttribute("estados", service.getListaEstados());
 
         return "cadastro-requerente";
     }
 
     @RequestMapping("/carregaCidade")
-    public @ResponseBody
-    String carregarCidades(int idEstado) {
+    public @ResponseBody String carregarCidades(int idEstado) {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            return mapper.writeValueAsString(cidadeRepository.findByEstadoIdOrderByNome(idEstado));
+            return mapper.writeValueAsString(service.getListaCidadesByIdEstado(idEstado));
         } catch (JsonProcessingException e) {
             return "";
         }
@@ -79,15 +73,12 @@ public class RequerenteController {
 
     @RequestMapping("/carregar")
     public String carregar(Requerente requerente, Model model) {
-        Requerente req = requerenteRepository.findById(requerente.getId());
+        Requerente req = service.buscarPorId(requerente.getId());
 
         model.addAttribute("requerente", req);
-
-        model.addAttribute("estados", estadoRepository
-                .findAll(new Sort(Sort.Direction.ASC, "sigla")));
-
-        model.addAttribute("cidades", cidadeRepository.
-                findByEstadoIdOrderByNome(req.getEndereco().getCidade()
+        model.addAttribute("estados", service.getListaEstados());
+        model.addAttribute("cidades", service
+                .getListaCidadesByIdEstado(req.getEndereco().getCidade()
                         .getEstado().getId()));
 
         return "cadastro-requerente";
@@ -95,7 +86,7 @@ public class RequerenteController {
 
     @RequestMapping("/filtrar")
     public String filtrar(String nomeFiltro, String cpfFiltro, Model model) {
-        model.addAttribute("requerentes", requerenteRepository.findByNomeOrCpf(nomeFiltro, cpfFiltro));
+        model.addAttribute("requerentes", service.getListaPorNomeOuCpf(nomeFiltro, cpfFiltro));
         model.addAttribute("msgConsulta", "Não há dados para serem exibidos para esta consulta.");
         model.addAttribute("nomeFiltro", nomeFiltro);
         model.addAttribute("cpfFiltro", cpfFiltro);
@@ -105,21 +96,22 @@ public class RequerenteController {
 
     @RequestMapping("/salvar")
     public @ResponseBody String salvarUsuario(Requerente requerente, Model model) {
-        requerenteRepository.save(requerente);
-        
+        service.salvar(requerente);
+
         return "Operacação realizada com sucesso!";
     }
 
     @RequestMapping("/remover")
     public @ResponseBody String remover(Requerente requerente) {
-        requerenteRepository.delete(requerente);
+        service.deletar(requerente);
 
         return "Requerente removido com sucesso.";
     }
-    
-    @RequestMapping("/validaCpf") 
+
+    @RequestMapping("/validaCpf")
     public @ResponseBody String validarCpf(String cpf, int id) {
-        if (requerenteRepository.buscarPorCpf(cpf, id) != null) {
+
+        if (service.buscarPorCpf(cpf, id) != null) {
             return "O CPF digitado já está cadastrado no sistema";
         }
 

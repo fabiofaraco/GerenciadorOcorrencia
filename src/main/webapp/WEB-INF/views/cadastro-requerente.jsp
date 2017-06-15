@@ -17,6 +17,13 @@
                         <input type="text" class="form-control" id="nome" name="nome" value="${requerente.nome}" />
                     </div>
                 </div>
+
+                <div class="col-md-4 col-sm-3">
+                    <div class="form-group">
+                        <label class="descricao" for="dataNascimento">Nascimento</label>
+                        <input type="text" class="form-control data mascara-data" id="dataNascimento" name="dataNascimento" value="${requerente.dataNascimento}" />
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -24,13 +31,6 @@
                     <div class="form-group">
                         <label class="descricao" for="cpfRequerente">CPF</label>
                         <input type="text" class="form-control mascara-cpf" id="cpfRequerente" name="cpf" value="${requerente.cpf}" />
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-3">
-                    <div class="form-group">
-                        <label class="descricao" for="dataNascimento">Nascimento</label>
-                        <input type="text" class="form-control data mascara-data" id="dataNascimento" name="dataNascimento" value="${requerente.dataNascimento}" />
                     </div>
                 </div>
 
@@ -42,29 +42,25 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="titulo" for="residencial">Endereço</label>
-            </div>
-
             <div class="row">
                 <div id="divEndereco" class="col-md-5 col-sm-3">
                     <div class="form-group">
                         <label class="descricao" for="logradouro">Endereço</label>
-                        <input type="text" class="form-control" id="logradouro" name="endereco.logradouro" value="${requerente.endereco.logradouro}" ${disabled} />
+                        <input type="text" class="form-control" id="logradouro" name="endereco.logradouro" value="${requerente.endereco.logradouro}" />
                     </div>
                 </div>
 
                 <div id="divComplemento" class="col-md-4 col-sm-6">
                     <div class="form-group">
                         <label class="descricao" for="complemento">Complemento</label>
-                        <input type="text" class="form-control" id="complemento" name="endereco.complemento" value="${requerente.endereco.complemento}" ${disabled} />
+                        <input type="text" class="form-control" id="complemento" name="endereco.complemento" value="${requerente.endereco.complemento}" />
                     </div>
                 </div>
 
                 <div id="divBairro" class="col-md-3 col-sm-6">
                     <div class="form-group">
                         <label class="descricao" for="bairro">Bairro</label>
-                        <input type="text" class="form-control" id="bairro" name="endereco.bairro" value="${requerente.endereco.bairro}" ${disabled} />
+                        <input type="text" class="form-control" id="bairro" name="endereco.bairro" value="${requerente.endereco.bairro}" />
                     </div>
                 </div>
             </div>
@@ -82,12 +78,12 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="col-md-5 col-sm-6">
                     <div id="divCidade" class="form-group">
                         <label class="descricao" for="cidade">Cidade</label>
 
-                        <select class="form-control" id="cidade" name="endereco.cidade" ${disabled}>
+                        <select class="form-control" id="cidade" name="endereco.cidade">
                             <option value=""><c:out value="Selecione..."/></option>
                             <c:forEach items="${cidades}" var="c">
                                 <option value="${c.id}" ${requerente.endereco.cidade.id == c.id? 'selected' : ''}><c:out value="${c.nome}"/></option>
@@ -97,21 +93,17 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="titulo" for="telefone">Telefone</label>
-            </div>
-
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div id="divResidencial" class="form-group">
-                        <label class="descricao" for="residencial">Residencial</label>
+                        <label class="descricao" for="residencial">Tel Residencial</label>
                         <input type="text" class="form-control mascara-telefone" id="residencial" name="telefone.residencial" value="${requerente.telefone.residencial}" ${disabled} />
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div id="divCelular" class="form-group">
-                        <label class="descricao" for="celular">Celular</label>
+                        <label class="descricao" for="celular">Tel Celular</label>
                         <input type="text" class="form-control mascara-celular" id="celular" name="telefone.celular" value="${requerente.telefone.celular}" ${disabled} />
                     </div>
                 </div>

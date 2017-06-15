@@ -7,7 +7,7 @@ import br.com.fabio.entity.Ocorrencia;
 import br.com.fabio.propertyEditor.CidadePropertyEditor;
 import br.com.fabio.propertyEditor.EstadoPropertyEditor;
 import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
-import br.com.fabio.service.OcorrenciaService;
+import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OcorrenciaController {
 
     @Autowired
-    private OcorrenciaService service;
+    private OcorrenciaServiceImpl service;
 
     @InitBinder
     public void customizeBinding(WebDataBinder binder) {
