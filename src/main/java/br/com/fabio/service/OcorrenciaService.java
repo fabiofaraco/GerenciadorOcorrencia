@@ -8,8 +8,6 @@ import br.com.fabio.repository.CidadeRepository;
 import br.com.fabio.repository.EstadoRepository;
 import br.com.fabio.repository.NaturezaEventoRepository;
 import br.com.fabio.repository.OcorrenciaRepository;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +39,6 @@ public class OcorrenciaService {
         return cidadeRepository.findByEstadoIdOrderByNome(id);
     }
 
-    public List<Ocorrencia> getListaOcorrenciaFiltro(int idNatureza, Date dataOcorrencia) {
-        return null;
-    }
-
     public NaturezaEvento getNaturezaEventoById(int id) {
         return naturezaEventoRepository.findById(id);
     }
@@ -61,9 +55,9 @@ public class OcorrenciaService {
         ocorrenciaRepository.delete(ocorrencia);
     }
 
-    public List<Ocorrencia> filtrar(int idNatureza, String dataOcorrencia) {
+    public List<Ocorrencia> filtrar(int id, int idNatureza, String dataOcorrencia) {
 
-        return ocorrenciaRepository.findByNaturezaIdAndDataOcorrencia(
-                idNatureza, dataOcorrencia);
+        return ocorrenciaRepository.findByIdAndNaturezaIdAndDataOcorrencia(
+                id, idNatureza, dataOcorrencia);
     }
 }

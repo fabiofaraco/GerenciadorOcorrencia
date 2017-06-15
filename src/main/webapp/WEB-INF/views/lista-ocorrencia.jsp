@@ -21,6 +21,18 @@
                     <div class="panel-body">
                         <div class="row filtro">
 
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input type="number" 
+                                           min="1"
+                                           id="idFiltro" 
+                                           name="idFiltro" 
+                                           class="form-control" 
+                                           placeholder="Nª Evento" 
+                                           value="${idFiltro}" />
+                                </div>
+                            </div>
+
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <select class="form-control" id="naturezaEventoFiltro" name="naturezaEventoFiltro">
@@ -35,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <input type="text" id="dataOcorrenciaFiltro" name="dataOcorrenciaFiltro" class="form-control mascara-data data" placeholder="Data da Ocorrência" value="${dataOcorrenciaFiltro}" />
                                 </div>
@@ -69,13 +81,13 @@
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao lbl-formata-data">${ocorrencia.dataOcorrencia}</label>
                                         </div>
-                                        
+
                                         <label class="titulo col-xs-4 col-sm-2">Hora:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">${ocorrencia.horaOcorrencia}</label>
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <label class="titulo col-xs-4 col-md-2">Natureza:</label>
                                         <div class="col-xs-8 col-md-4">

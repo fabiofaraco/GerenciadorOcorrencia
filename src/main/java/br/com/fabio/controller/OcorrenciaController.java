@@ -80,11 +80,12 @@ public class OcorrenciaController {
     }
 
     @RequestMapping("/filtrar")
-    public String filtrar(int idNaturezaEvento, String dataOcorrencia, Model model) {
-        model.addAttribute("ocorrencias",service.filtrar(idNaturezaEvento, dataOcorrencia));
+    public String filtrar(int id, int idNaturezaEvento, String dataOcorrencia, Model model) {
+        model.addAttribute("ocorrencias",service.filtrar(id, idNaturezaEvento, dataOcorrencia));
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
         model.addAttribute("estados", service.getListaEstados());
         model.addAttribute("msgConsulta", "Não há dados para serem exibidos para esta consulta.");
+        model.addAttribute("idFiltro", id);
         model.addAttribute("naturezaEventoFiltro", idNaturezaEvento);
         model.addAttribute("dataOcorrenciaFiltro", dataOcorrencia);
         

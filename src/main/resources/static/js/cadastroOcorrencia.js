@@ -15,6 +15,7 @@ $(document).ready(function () {
                     function (data)
                     {
                         successDefault("/ocorrencia/filtrar", data, {
+                            id: $("#id").val(),
                             idNaturezaEvento: $("#naturezaEvento").val(),
                             dataOcorrencia: $("#dataOcorrencia").val()
                         });
