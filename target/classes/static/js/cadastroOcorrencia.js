@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $("#conteudo").on("click", ".cadOcorrencia #btnSalvarOcorrencia", function () {
+    $("#conteudo").on("click", ".cadOcorrencia #btnSalvarOcorrencia", function ()
+    {
         if (validaCampos())
         {
             ajaxPostSubmit("/ocorrencia/salvar", $("form").serialize(),
@@ -14,8 +15,8 @@ $(document).ready(function () {
                     function (data)
                     {
                         successDefault("/ocorrencia/filtrar", data, {
-                            nomeFiltro: $("#nome").val(),
-                            cpfFiltro: $("#cpfRequerente").val()
+                            idNaturezaEvento: $("#naturezaEvento").val(),
+                            dataOcorrencia: $("#dataOcorrencia").val()
                         });
                     }
             );
@@ -49,8 +50,9 @@ $(document).ready(function () {
 //  ----------------------------------------------------------------------------
     var validaCampos = function ()
     {
-        if (!criticar({valor: $("#evento").val(), mensagem: "Campo Obrigatório: Natureza da Ocorrência"}))
+        if ($("#naturezaEvento").val() === "0")
         {
+            exibirMensagemErro("Campo Obrigatório: Natureza do Evento");
             return false;
         }
 
@@ -58,6 +60,30 @@ $(document).ready(function () {
         {
             return false;
         }
+
+        if (!criticar({valor: $("#dataOcorrencia").val(), mensagem: "Campo Obrigatório: Data da Ocorrência"}))
+        {
+            return false;
+        }
+
+        if (!validaData($("#dataOcorrencia").val()))
+        {
+            exibirMensagemErro("A Data de Ocorrência digitada não é válida.");
+            return false;
+        }
+
+        if (!criticar({valor: $("#horaOcorrencia").val(), mensagem: "Campo Obrigatório: Hora da Ocorrência"}))
+        {
+            return false;
+        }
+
+        if (!validaHora($("#horaOcorrencia").val()))
+        {
+            exibirMensagemErro("A Hora da Ocorrência digitada não é válida.");
+            return false;
+        }
+
+        
 
         if (!criticar({valor: $("#logradouro").val(), mensagem: "Campo Obrigatório: Endereço"}))
         {
@@ -83,7 +109,7 @@ $(document).ready(function () {
         {
             return false;
         }
-        
+
         if (!criticar({valor: $("#relato").val(), mensagem: "Campo Obrigatório: Relato dos Fatos"}))
         {
             return false;

@@ -93,29 +93,18 @@ $(document).ready(function () {
             yearRange: "c-100:c+20"
         });
 
-        $(".data-hora").datetimepicker({
-             dateFormat: 'dd-mm-yy'
-        });
-
-        $('input.data').each(function () {
-            var anoMesDia = $(this).val().split("-");
+        $('label.lbl-formata-data').each(function () {
             
-            $(this).val($.datepicker.formatDate('dd/mm/yy',
-                    new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2])));
         });
-        
-       
 
-        $('.mascara-data').mask('99/99/9999');
+        $('input.data').each(function ()
+        {
+            
+        });
+
+        $('.mascara-hora').mask('99:99');
         $('.mascara-cpf').mask('999.999.999-99');
         $('.mascara-telefone').mask('(00) 0000-0000');
         $('.mascara-celular').mask('(00) 00000-0000');
-
-        $('label.lbl-formata-data').each(function () {
-            var anoMesDia = $(this).html().split("-");
-            $(this).html($.datepicker.formatDate('dd/mm/yy',
-                    new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2])));
-        });
-    }
-    ;
+    };
 });

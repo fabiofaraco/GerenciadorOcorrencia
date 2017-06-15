@@ -19,10 +19,13 @@
                         <div class="form-group">
                             <label class="descricao" for="evento">Natureza da Ocorrência</label>
 
-                            <select class="form-control" id="evento" name="evento">
+                            <select class="form-control" id="naturezaEvento" name="naturezaEvento">
                                 <option value=""><c:out value="Selecione..."/></option>
-                                <c:forEach items="${eventos}" var="e">
-                                    <option value="${e.id}" ${ocorrencia.evento.id == e.id ? 'selected' : ''}><c:out value="${e.descricao}"/></option>
+                                <c:forEach items="${naturezasEvento}" var="naturezaEvento">
+                                    <option value="${naturezaEvento.id}" 
+                                            ${ocorrencia.naturezaEvento.id == naturezaEvento.id ? 'selected' : ''}>
+                                        <c:out value="${naturezaEvento.descricao}"/>
+                                    </option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -34,11 +37,20 @@
                             <input type="text" class="form-control" id="responsavel" name="responsavel" value="${ocorrencia.responsavel}" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-4 col-sm-6">
+                <div class="row">
+                    <div class="col-md-4 col-sm-5">
                         <div class="form-group">
-                            <label class="descricao" for="data">Data da Ocorrência</label>
-                            <input type="text" class="form-control data-hora" id="data" name="data" value="${ocorrencia.data}" />
+                            <label class="descricao" for="dataOcorrencia">Data da Ocorrência</label>
+                            <input type="text" class="form-control mascara-data data" id="dataOcorrencia" name="dataOcorrencia" value="${ocorrencia.dataOcorrencia}" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-5">
+                        <div class="form-group">
+                            <label class="descricao" for="horaOcorrencia">Hora Ocorrência</label>
+                            <input type="text" class="form-control mascara-hora" id="horaOcorrencia" name="horaOcorrencia" value="${ocorrencia.horaOcorrencia}" />
                         </div>
                     </div>
                 </div>
@@ -114,4 +126,7 @@
             <input type="hidden" class="form-control" id="id" name="id" value="${ocorrencia.id}"/>
         </div>
     </div>
+
+    <input type="hidden" class="form-control" id="naturezaEventoFiltro" name="naturezaEventoFiltro" value="${naturezaEventoFiltro}"/>		
+    <input type="hidden" class="form-control" id="dataOcorrenciaFiltro" name="dataOcorrenciaFiltro" value="${dataOcorrenciaFiltro}"/>	
 </div>

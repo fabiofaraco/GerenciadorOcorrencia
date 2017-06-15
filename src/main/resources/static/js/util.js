@@ -151,7 +151,7 @@ $(document).ready(function () {
         }
 
         element.data("isclicked", true);
-        
+
         setTimeout(function () {
             element.removeData("isclicked");
         }, 1500);
@@ -159,4 +159,83 @@ $(document).ready(function () {
         return false;
     };
 
+//  ----------------------------------------------------------------------------
+
+    formatInputDate = function (data)
+    {
+        if (data !== '') {
+            var arrData = data.split(" ");
+            alert(data);
+            return formatDate(arrData[2], arrData[1], arrData[5], false);
+        }
+    };
+
+//  ----------------------------------------------------------------------------
+
+    formatDate = function (dia, mes, ano, isMesNumeric) {
+        return dia + "/" + (isMesNumeric ? mes : getMes(mes)) + "/" + ano;
+    };
+
+    formatLabelDate = function (data)
+    {
+        if (data !== '') {
+            var arrData = data.split("-");
+            return formatDate(arrData[1], arrData[2], arrData[0], true);
+        }
+    };
+
+//  ----------------------------------------------------------------------------
+
+    getMes = function (mes)
+    {
+        if (mes === "Jan") {
+            return "01";
+        } else if (mes === "Feb") {
+            return "02";
+        } else if (mes === "Mar") {
+            return "03";
+        } else if (mes === "Apr") {
+            return "04";
+        } else if (mes === "May") {
+            return "05";
+        } else if (mes === "Jun") {
+            return "06";
+        } else if (mes === "Jul") {
+            return "07";
+        } else if (mes === "Aug") {
+            return "08";
+        } else if (mes === "Sep") {
+            return "09";
+        } else if (mes === "Oct") {
+            return "10";
+        } else if (mes === "Nov") {
+            return "11";
+        } else if (mes === "Dez") {
+            return "12";
+        }
+    };
+
+    validaHora = function (hora) {
+        if (hora !== "") {
+            if (hora.length !== 5) {
+                return false;
+            }
+
+            var arrHoras = hora.split(":");
+            var hora = arrHoras[0];
+            var minuto = arrHoras[1];
+
+            if (hora < 0 || hora > 23)
+            {
+                return false;
+            }
+            
+            if(minuto < 0 || minuto > 59)
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    };
 });

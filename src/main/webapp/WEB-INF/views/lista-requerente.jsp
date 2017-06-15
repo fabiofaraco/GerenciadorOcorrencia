@@ -68,7 +68,7 @@
                                             <label class="descricao lbl-formata-data">${requerente.dataNascimento}</label>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="titulo col-xs-4 col-sm-2">E-mail:</label>
                                         <div class="col-xs-8 col-sm-10">
@@ -131,6 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-12 col-md-2">
                                     <div class="form-group">
                                         <button type="button" class="btn btn-link btn-alterar-requerente" 

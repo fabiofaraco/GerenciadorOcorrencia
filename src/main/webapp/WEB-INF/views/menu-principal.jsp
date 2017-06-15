@@ -95,6 +95,7 @@
     <script src=<c:url value="js/jquery/jquery-ui.min.js"/>></script>
     <script src=<c:url value="js/jquery/jquery.datetimepicker.full.js"/>></script>
     <script src=<c:url value="bootstrap/js/bootstrap.min.js"/>></script>
+    <script src=<c:url value="js/moment.js"/>></script>
     <script src=<c:url value="js/mensagem.js"/>></script>
     <script src=<c:url value="js/util.js"/>></script>
     <script src=<c:url value="js/ajaxUtil.js"/>></script>

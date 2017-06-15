@@ -1,40 +1,98 @@
 $(document).ready(function () {
+
     $('#conteudo').on("click", ".listaOcorrencia #btnIncluirOcorrencia", function (e) {
         e.preventDefault();
         ajaxLoad("/ocorrencia/cadastro");
     });
-//	----------------------------------------------------------------
 
-    $('.btn-visualizar-ocorrencia').on("click", function () {
-        var id = $(this).attr('data-id-ocorrencia');
-        $('#frm').attr('action', 'ocorrencia/carregar?visualiza=true&id=' + id);
-        $('#frm').submit();
-    });
-//	----------------------------------------------------------------
+//  ----------------------------------------------------------------------------
 
     $("#conteudo").on("click", ".listaOcorrencia .btn-alterar-ocorrencia", function (e) {
         e.preventDefault();
+
         var id = $(this).attr('data-id-ocorrencia');
-        
+
         ajaxLoad("/ocorrencia/carregar", {
             id: id,
-            nomeFiltro: $("#nomeFiltro").val(),
-            cpfFiltro: $("#cpfFiltro").val()
+            naturezaEvento: $("#naturezaEventoFiltro").val(),
+            dataOcorrencia: $("#dataOcorrenciaFiltro").val()
         });
     });
-//	----------------------------------------------------------------
 
-    $('.btn-excluir-ocorrencia').on("click", function () {
+//  ----------------------------------------------------------------------------
+
+    $("#conteudo").on("click", ".listaOcorrencia .btn-excluir-ocorrencia", function (e) {
+        e.preventDefault();
+
         var id = $(this).attr('data-id-ocorrencia');
+
+        $("#msgConfirmacao").html("Deseja excluir o evento Nª " + id + "?");
         $('.btn-realiza-exclusao-ocorrencia').attr('data-id-ocorrencia', id);
         $('#modal-excluir-ocorrencia').modal('show');
     });
-//	----------------------------------------------------------------
 
-    $('.btn-realiza-exclusao-ocorrencia').on("click", function () {
+//  ----------------------------------------------------------------------------
+
+    $("#conteudo").on("click", ".listaOcorrencia .btn-realiza-exclusao-ocorrencia", function (e) {
+        e.preventDefault();
+
         var id = $(this).attr('data-id-ocorrencia');
-        $('#frm').attr('action', 'ocorrencia/remover?id=' + id);
-        $('#frm').submit();
+
+        ajaxPostSubmit("/ocorrencia/remover", {id: id},
+                function () {
+                    $('#modal-excluir-ocorrencia').modal('toggle');
+                    beforeSendDefult();
+                },
+                function () {
+                    var msgErro = "Não foi possível excluir a ocorrência. "
+                            + "Verifique se ela já não está associado à um requerente.";
+
+                    errorDefault(msgErro);
+                },
+                function (data) {
+
+                    successDefault("/ocorrencia/filtrar", data, {
+                        idNaturezaEvento: $("#naturezaEventoFiltro").val(),
+                        dataOcorrencia: $("#dataOcorrenciaFiltro").val()
+                    });
+                }
+        );
     });
-}
-);
+
+//  ----------------------------------------------------------------------------
+
+    $("#conteudo").on("click", ".listaOcorrencia #btnFiltroOcorrencia", function ()
+    {
+        if (validaFiltroOcorrencia())
+        {
+            ajaxLoad("/ocorrencia/filtrar",
+                    {
+                        idNaturezaEvento: $("#naturezaEventoFiltro").val(),
+                        dataOcorrencia: $("#dataOcorrenciaFiltro").val()
+                    });
+        }
+    });
+
+//  ----------------------------------------------------------------------------
+
+    var validaFiltroOcorrencia = function ()
+    {
+        if ($.trim($("#naturezaEventoFiltro").val()) === "0"
+                && $.trim($("#dataOcorrenciaFiltro").val()) === "")
+        {
+            exibirMensagemErro("Ao menos um dos campos do filtro deve ser preenchido");
+            return false;
+        }
+
+        if ($.trim($("#dataOcorrenciaFiltro").val()) !== "")
+        {
+            if (!validaData($("#dataOcorrenciaFiltro").val()))
+            {
+                exibirMensagemErro("A Data da Ocorrência digitada não é válida.");
+                return false;
+            }
+        }
+
+        return true;
+    };
+});
