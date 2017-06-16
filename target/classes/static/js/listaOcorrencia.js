@@ -68,7 +68,7 @@ $(document).ready(function () {
         {
             ajaxLoad("/ocorrencia/filtrar",
                     {
-                        id:  $("#idFiltro").val(),
+                        id:  $("#idFiltro").val() === "" ? 0 : $("#idFiltro").val(),
                         idNaturezaEvento: $("#naturezaEventoFiltro").val(),
                         dataOcorrencia: $("#dataOcorrenciaFiltro").val()
                     });

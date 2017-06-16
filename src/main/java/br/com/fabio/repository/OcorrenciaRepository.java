@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Long> {
 
     public Ocorrencia findById(int id);
-    
+
     @Query(QueryOcorrencia.FILTRAR_POR_ID_E_NATUREZA_E_DATA_OCORRENCIA)
-    public List<Ocorrencia> findByIdAndNaturezaIdAndDataOcorrencia(int id, int idNatureza, String dataOcorrencia);
+    public List<Ocorrencia> findByIdAndNaturezaIdAndDataOcorrencia(
+            int id, int idNatureza, String dataOcorrencia);
 }

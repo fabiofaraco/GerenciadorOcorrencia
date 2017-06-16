@@ -60,7 +60,7 @@
                             <a href="javascript:void(0);" id="aOcorrencia"><i class="fa fa-fw fa-ambulance"></i> Ocorrências</a>
                         </li>
                         <li id="liProtocolo">
-                            <a href="${pageContext.request.contextPath}/protocolo/lista"><i class="fa fa-fw fa-folder"></i> Protocolos</a>
+                            <a href="javascript:void(0);" id="aProtocolo"><i class="fa fa-fw fa-folder"></i> Protocolos</a>
                         </li>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-pie-chart"></i> Relatórios <i class="fa fa-fw fa-caret-down"></i></a>
@@ -103,7 +103,9 @@
     <script src=<c:url value="js/cadastroUsuario.js"/>></script>
     <script src=<c:url value="js/cadastroRequerente.js"/>></script>
     <script src=<c:url value="js/cadastroOcorrencia.js"/>></script>
+    <script src=<c:url value="js/cadastroProtocolo.js"/>></script>
     <script src=<c:url value="js/listaUsuario.js"/>></script>
     <script src=<c:url value="js/listaRequerente.js"/>></script>
     <script src=<c:url value="js/listaOcorrencia.js"/>></script>
+    <script src=<c:url value="js/listaProtocolo.js"/>></script>
 </html>

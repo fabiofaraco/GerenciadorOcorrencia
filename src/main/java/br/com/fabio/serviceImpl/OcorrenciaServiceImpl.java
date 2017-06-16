@@ -8,7 +8,6 @@ import br.com.fabio.repository.CidadeRepository;
 import br.com.fabio.repository.EstadoRepository;
 import br.com.fabio.repository.NaturezaEventoRepository;
 import br.com.fabio.repository.OcorrenciaRepository;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

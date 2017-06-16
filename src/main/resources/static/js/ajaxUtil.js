@@ -13,15 +13,17 @@ $(document).ready(function () {
 
     ajaxPostSubmit = function (url, parametros, fnBeforeSend, fnError, fnSuccess)
     {
-        $.ajax({
-            type: "POST",
-            url: contextPath + url,
-            data: parametros,
-            dataType: "html",
-            beforeSend: fnBeforeSend,
-            error: fnError,
-            success: fnSuccess
-        });
+        setTimeout(function () {
+            $.ajax({
+                type: "POST",
+                url: contextPath + url,
+                data: parametros,
+                dataType: "html",
+                beforeSend: fnBeforeSend,
+                error: fnError,
+                success: fnSuccess
+            });
+        }, 150);
     };
 
 //  ----------------------------------------------------------------------------
@@ -60,6 +62,26 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
+    successDefaultJson = function (url, msg, parametros)
+    {
+        var objMsg = JSON.parse(msg);
+        var MSG_SUCESSO = 1;
+
+        if (objMsg.id === MSG_SUCESSO) {
+            $("#conteudo").load(contextPath + url, parametros, function () {
+                carregarScriptPagina();
+                exibirMensagemSucesso(objMsg.mensagem);
+            });
+
+        } else {
+            $(".load-img").fadeOut();
+            exibirMensagemErro(objMsg.mensagem);
+        }
+    };
+
+//  ----------------------------------------------------------------------------
+
+
     errorDefault = function (msgErro)
     {
         $(".load-img").fadeOut();
@@ -93,18 +115,12 @@ $(document).ready(function () {
             yearRange: "c-100:c+20"
         });
 
-        $('label.lbl-formata-data').each(function () {
-            
-        });
-
-        $('input.data').each(function ()
-        {
-            
-        });
-
+        $('.mascara-data').mask('99/99/9999');
         $('.mascara-hora').mask('99:99');
         $('.mascara-cpf').mask('999.999.999-99');
         $('.mascara-telefone').mask('(00) 0000-0000');
         $('.mascara-celular').mask('(00) 00000-0000');
-    };
+    }
+    ;
+
 });

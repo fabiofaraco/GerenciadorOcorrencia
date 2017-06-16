@@ -12,5 +12,6 @@ public class QueryOcorrencia {
             + "     else ?2 end \n"
             + "and o.dataOcorrencia = \n"
             + "case when ?3 = '' then o.dataOcorrencia \n"
-            + "     else ?3 end \n";
+            + "     else ?3 end \n"
+            + "order by o.naturezaEvento.descricao, o.dataOcorrencia\n";
 }

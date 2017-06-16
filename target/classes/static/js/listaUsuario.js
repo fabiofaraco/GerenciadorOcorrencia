@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#conteudo').on("click", "#btnIncluirUsuario", function (e)
+    $('#conteudo').on("click", ".listaUsuario #btnIncluirUsuario", function (e)
     {
         e.preventDefault();
         ajaxLoad("/usuario/cadastro", null);
@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------	
 
-    $("#conteudo").on("click", ".btn-alterar", function (e)
+    $("#conteudo").on("click", ".listaUsuario .btn-alterar", function (e)
     {
         e.preventDefault();
         var id = $(this).attr('data-id-usuario');
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------	
 
-    $("#conteudo").on("click", ".btn-excluir", function (e)
+    $("#conteudo").on("click", ".listaUsuario .btn-excluir", function (e)
     {
         e.preventDefault();
         var id = $(this).attr('data-id-usuario');
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------
 
-    $("#conteudo").on("click", ".btn-realiza-exclusao-usuario", function (e)
+    $("#conteudo").on("click", ".listaUsuario .btn-realiza-exclusao-usuario", function (e)
     {
         e.preventDefault();
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------	
 
-    $("#conteudo").on("click", "#btnFiltro", function (e)
+    $("#conteudo").on("click", ".listaUsuario #btnFiltro", function (e)
     {
         e.preventDefault();
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------	
 
-    $("#conteudo").on("click", "#aFiltroUsuario", function (e)
+    $("#conteudo").on("click", ".listaUsuario #aFiltroUsuario", function (e)
     {
         e.preventDefault();
 

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#conteudo").on("click", "#btnSalvarRequerente", function () {
+    $("#conteudo").on("click", ".cadRequerente #btnSalvarRequerente", function () {
         if (validaCampos()) {
             ajaxPostSubmit("/requerente/salvar", $("form").serialize(),
                     function () {
@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    $("#conteudo").on("focusout", "#cpfRequerente", function (e) {
+    $("#conteudo").on("focusout", ".cadRequerente #cpfRequerente", function (e) {
         e.preventDefault();
 
         ajaxPost("/requerente/validaCpf", {cpf: $("#cpfRequerente").val(), id: $("#id").val()}, function (data) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    $('#conteudo').on('change', "#estadoCpf", function (e) {
+    $('#conteudo').on('change', ".cadRequerente #estadoCpf", function (e) {
         e.preventDefault();
 
         var idEstado = $('#estadoCpf').val();

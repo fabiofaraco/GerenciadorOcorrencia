@@ -11,9 +11,7 @@ import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -85,7 +83,7 @@ public class OcorrenciaController {
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
         model.addAttribute("estados", service.getListaEstados());
         model.addAttribute("msgConsulta", "Não há dados para serem exibidos para esta consulta.");
-        model.addAttribute("idFiltro", id);
+        model.addAttribute("idFiltro", id == 0 ? "" : id);
         model.addAttribute("naturezaEventoFiltro", idNaturezaEvento);
         model.addAttribute("dataOcorrenciaFiltro", dataOcorrencia);
         
