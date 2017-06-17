@@ -1,7 +1,6 @@
 package br.com.fabio.controller;
 
 import br.com.fabio.entity.Protocolo;
-import br.com.fabio.entity.Requerente;
 import br.com.fabio.service.ProtocoloService;
 import br.com.fabio.service.RequerenteService;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
