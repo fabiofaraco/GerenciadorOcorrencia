@@ -115,6 +115,24 @@ $(document).ready(function () {
             yearRange: "c-100:c+20"
         });
 
+        $('label.lbl-formata-data').each(function () {
+            if ($(this).html() !== "") {
+                var anoMesDia = $(this).html().split("-");
+
+                $(this).html($.datepicker.formatDate('dd/mm/yy',
+                        new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2])));
+            }
+        });
+
+        $('input.data').each(function () {
+            if ($(this).val() !== "") {
+                var anoMesDia = $(this).val().split("-");
+
+                $(this).val($.datepicker.formatDate('dd/mm/yy',
+                        new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2])));
+            }
+        });
+
         $('.mascara-data').mask('99/99/9999');
         $('.mascara-hora').mask('99:99');
         $('.mascara-cpf').mask('999.999.999-99');

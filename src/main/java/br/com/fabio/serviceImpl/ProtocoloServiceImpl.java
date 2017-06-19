@@ -43,7 +43,7 @@ public class ProtocoloServiceImpl implements ProtocoloService {
 
     @Override
     public List<Protocolo> filtrar(String cpfRequerente, String condigoAutenticacao) {
-        
+
         return protocoloRepository.findByRequerenteCpfAndCodigoAutenticacao(
                 cpfRequerente, condigoAutenticacao);
     }
@@ -52,7 +52,7 @@ public class ProtocoloServiceImpl implements ProtocoloService {
     public void deletar(Protocolo protocolo) {
         protocoloRepository.delete(protocolo);
     }
-    
+
     private String gerarCodigoAutenticacao(int idRequerente, int idOcorrencia) {
 
         Requerente requerente = requerenteRepository.findById(idRequerente);
@@ -67,14 +67,13 @@ public class ProtocoloServiceImpl implements ProtocoloService {
         return codigo;
     }
 
-    private String converteData(String data) {
+    private String converteData(Date data) {
         try {
-
-            SimpleDateFormat frmtData = new SimpleDateFormat("dd/MM/yyyy");
+            
             SimpleDateFormat frmt = new SimpleDateFormat("yyyyMMdd");
 
-            return frmt.format(frmtData.parse(data));
-        } catch (ParseException ex) {
+            return frmt.format(data);
+        } catch (Exception ex) {
             return "99999999";
         }
     }

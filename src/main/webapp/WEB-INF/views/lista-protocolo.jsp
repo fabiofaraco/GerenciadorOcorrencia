@@ -81,7 +81,7 @@
 
                                         <label class="titulo col-xs-4 col-sm-2">CPF:</label>
                                         <div class="col-xs-8 col-sm-4">
-                                            <label class="descricao lbl-formata-data">${protocolo.requerente.cpf}</label>
+                                            <label class="descricao">${protocolo.requerente.cpf}</label>
                                         </div>
                                     </div>
 

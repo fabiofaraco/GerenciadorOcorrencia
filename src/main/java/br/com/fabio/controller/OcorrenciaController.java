@@ -10,8 +10,12 @@ import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -28,6 +32,11 @@ public class OcorrenciaController {
 
     @InitBinder
     public void customizeBinding(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+
+        binder.registerCustomEditor(Date.class, "dataOcorrencia", new CustomDateEditor(dateFormat, true));
+        binder.registerCustomEditor(Date.class, "dataOcorrenciaFiltro", new CustomDateEditor(dateFormat, true));
         binder.registerCustomEditor(NaturezaEvento.class, new NaturezaEventoPropertyEditor());
         binder.registerCustomEditor(Estado.class, new EstadoPropertyEditor());
         binder.registerCustomEditor(Cidade.class, new CidadePropertyEditor());
@@ -78,7 +87,10 @@ public class OcorrenciaController {
     }
 
     @RequestMapping("/filtrar")
-    public String filtrar(int id, int idNaturezaEvento, String dataOcorrencia, Model model) {
+    public String filtrar(int id, int idNaturezaEvento, 
+            @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataOcorrencia, 
+            Model model) {
+        
         model.addAttribute("ocorrencias",service.filtrar(id, idNaturezaEvento, dataOcorrencia));
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
         model.addAttribute("estados", service.getListaEstados());

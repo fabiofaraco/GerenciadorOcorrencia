@@ -35,41 +35,48 @@ $(document).ready(function () {
 
         if ($("#dataOcorrencia").val() !== "") {
 
-            var select = $('#evento');
-            select.find('option').remove();
-            $('<option>').val("0").text("Selecione...").appendTo(select);
+            if (validaData($("#dataOcorrencia").val()))
+            {
+                var select = $('#evento');
+                select.find('option').remove();
+                $('<option>').val("").text("Selecione...").appendTo(select);
 
-            ajaxPost("/protocolo/carregaOcorrencia",
-                    {
-                        dataOcorrencia: $("#dataOcorrencia").val()
-                    },
-                    function (data)
-                    {
-                        if (data !== null) {
-                            $.each(JSON.parse(data), function (index, ocorrencia) {
-                                $('<option>').val(ocorrencia.id)
-                                        .text(ocorrencia.naturezaEvento.descricao
-                                                + " - " + ocorrencia.endereco.logradouro
-                                                + "," + ocorrencia.endereco.complemento
-                                                + "," + ocorrencia.endereco.bairro)
-                                        .appendTo(select);
+                ajaxPost("/protocolo/carregaOcorrencia",
+                        {
+                            dataOcorrencia: $("#dataOcorrencia").val()
+                        },
+                        function (data)
+                        {
+                            if (data !== null) {
+                                $.each(JSON.parse(data), function (index, ocorrencia) {
+                                    $('<option>').val(ocorrencia.id)
+                                            .text(ocorrencia.naturezaEvento.descricao
+                                                    + " - " + ocorrencia.endereco.logradouro
+                                                    + "," + ocorrencia.endereco.complemento
+                                                    + "," + ocorrencia.endereco.bairro)
+                                            .appendTo(select);
 
-                            });
-                        } else {
-                            exibirMensagemErro("Nenhum ocorrência foi encontrada para esta data");
-                            $("#nomeRequerente").val("");
+                                });
+                            } else {
+                                exibirMensagemErro("Nenhum ocorrência foi encontrada para esta data");
+                                $("#nomeRequerente").val("");
+                            }
                         }
-                    }
-            );
+                );
+            } else
+            {
+                exibirMensagemErro("A Data de Nascimento digitada não é válida.");
+                return false;
+            }
         }
     });
 
 //  ----------------------------------------------------------------------------
 
     $("#conteudo").on("click", ".cadProtocolo #btnSalvar", function () {
-        //if (validaCampos()) 
+        if (validaCampos())
         {
-            ajaxPostSubmit("/protocolo/salvar", 
+            ajaxPostSubmit("/protocolo/salvar",
                     {
                         id: 0,
                         idOcorrencia: $("#evento").val(),
@@ -90,4 +97,21 @@ $(document).ready(function () {
             );
         }
     });
+
+//  ----------------------------------------------------------------------------
+
+    var validaCampos = function ()
+    {
+        if (!criticar({valor: $("#cpfRequerente").val(), mensagem: "Campo Obrigatório: CPF do Requerente"}))
+        {
+            return false;
+        }
+        
+        if (!criticar({valor: $("#evento").val(), mensagem: "Campo Obrigatório: Evento"}))
+        {
+            return false;
+        }
+        
+        return true;
+    };
 });

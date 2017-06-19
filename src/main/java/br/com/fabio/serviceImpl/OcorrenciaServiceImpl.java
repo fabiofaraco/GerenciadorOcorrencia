@@ -8,6 +8,9 @@ import br.com.fabio.repository.CidadeRepository;
 import br.com.fabio.repository.EstadoRepository;
 import br.com.fabio.repository.NaturezaEventoRepository;
 import br.com.fabio.repository.OcorrenciaRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -54,9 +57,21 @@ public class OcorrenciaServiceImpl {
         ocorrenciaRepository.delete(ocorrencia);
     }
 
-    public List<Ocorrencia> filtrar(int id, int idNatureza, String dataOcorrencia) {
+    public List<Ocorrencia> filtrar(int id, int idNatureza, Date dataOcorrencia) {
 
         return ocorrenciaRepository.findByIdAndNaturezaIdAndDataOcorrencia(
                 id, idNatureza, dataOcorrencia);
+    }
+    
+    private Date parseDate(String data) 
+    {
+        SimpleDateFormat frmt = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat frmtNew = new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            return frmt.parse(data);
+        } catch(Exception e) {
+            return null;
+        }
     }
 }

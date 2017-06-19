@@ -1,16 +1,28 @@
 package br.com.fabio.controller;
 
+import br.com.fabio.entity.Cidade;
+import br.com.fabio.entity.Estado;
+import br.com.fabio.entity.NaturezaEvento;
 import br.com.fabio.entity.Protocolo;
+import br.com.fabio.propertyEditor.CidadePropertyEditor;
+import br.com.fabio.propertyEditor.EstadoPropertyEditor;
+import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.service.ProtocoloService;
 import br.com.fabio.service.RequerenteService;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
 import br.com.fabio.util.RespostaJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +36,14 @@ public class ProtocoloController
     private RequerenteService requerenteService;
     @Autowired
     private OcorrenciaServiceImpl ocorrenciaService;
+    
+    @InitBinder
+    public void customizeBinding(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+
+        binder.registerCustomEditor(Date.class, "dataOcorrencia", new CustomDateEditor(dateFormat, true));
+    }
     
     @RequestMapping("/lista")
     public String getLista(Model model) {
@@ -53,7 +73,8 @@ public class ProtocoloController
     }
     
     @RequestMapping("/carregaOcorrencia")
-    public @ResponseBody String getCarregarOcorrencia(String dataOcorrencia) throws JsonProcessingException {
+    public @ResponseBody String getCarregarOcorrencia(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataOcorrencia) 
+            throws JsonProcessingException {
         
         ObjectMapper mapper = new ObjectMapper();
         

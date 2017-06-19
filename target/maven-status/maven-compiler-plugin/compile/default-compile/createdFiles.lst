@@ -33,6 +33,7 @@ br\com\fabio\repository\RequerenteRepository.class
 br\com\fabio\repository\CidadeRepository.class
 br\com\fabio\propertyEditor\PerfilPropertyEditor.class
 br\com\fabio\entity\Perfil.class
+br\com\fabio\util\RespostaJson.class
 br\com\fabio\entity\Cidade.class
 br\com\fabio\entity\Telefone.class
 br\com\fabio\propertyEditor\EstadoPropertyEditor.class
