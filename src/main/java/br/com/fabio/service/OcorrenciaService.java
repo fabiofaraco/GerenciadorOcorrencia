@@ -1,12 +1,9 @@
 package br.com.fabio.service;
 
-import br.com.fabio.entity.Cidade;
-import br.com.fabio.entity.Estado;
 import br.com.fabio.entity.NaturezaEvento;
 import br.com.fabio.entity.Ocorrencia;
 import java.util.Date;
 import java.util.List;
-import org.springframework.data.domain.Sort;
 
 public interface OcorrenciaService extends EnderecoService {
 
