@@ -14,4 +14,10 @@ public class QueryOcorrencia {
             + "case when ?3 is null then o.dataOcorrencia \n"
             + "     else ?3 end \n"
             + "order by o.naturezaEvento.descricao, o.dataOcorrencia\n";
+
+    public static final String FILTRAR_POR_NATUREZA_PERIODO
+            = "select count(o), o.naturezaEvento.descricao\n"
+            + "from Ocorrencia o\n"
+            + "where o.dataOcorrencia between ?1 and ?2\n"
+            + "group by o.dataOcorrencia\n";
 }

@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $("#conteudo").on("click", ".cadUsuario #btnSalvar", function () {
         if (validaCampos()) {
+            
+            beforeSendDefult();
+            
             ajaxPostSubmit("/usuario/salvar", $("form").serialize(),
                     function () {
                         beforeSendDefult();

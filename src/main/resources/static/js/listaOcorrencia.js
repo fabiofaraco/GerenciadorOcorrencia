@@ -38,9 +38,11 @@ $(document).ready(function () {
 
         var id = $(this).attr('data-id-ocorrencia');
 
+        $('#modal-excluir-ocorrencia').modal('toggle');
+        beforeSendDefult();
+
         ajaxPostSubmit("/ocorrencia/remover", {id: id},
                 function () {
-                    $('#modal-excluir-ocorrencia').modal('toggle');
                     beforeSendDefult();
                 },
                 function () {
@@ -52,7 +54,7 @@ $(document).ready(function () {
                 function (data) {
 
                     successDefault("/ocorrencia/filtrar", data, {
-                        id:  $("#idFiltro").val(),
+                        id: $("#idFiltro").val() === "" ? 0 : $("#idFiltro").val(),
                         idNaturezaEvento: $("#naturezaEventoFiltro").val(),
                         dataOcorrencia: $("#dataOcorrenciaFiltro").val()
                     });
@@ -68,7 +70,7 @@ $(document).ready(function () {
         {
             ajaxLoad("/ocorrencia/filtrar",
                     {
-                        id:  $("#idFiltro").val() === "" ? 0 : $("#idFiltro").val(),
+                        id: $("#idFiltro").val() === "" ? 0 : $("#idFiltro").val(),
                         idNaturezaEvento: $("#naturezaEventoFiltro").val(),
                         dataOcorrencia: $("#dataOcorrenciaFiltro").val()
                     });
@@ -98,7 +100,7 @@ $(document).ready(function () {
 
         return true;
     };
-    
+
     $("#conteudo").on("click", "#aFiltroOcorrencia", function (e)
     {
         e.preventDefault();

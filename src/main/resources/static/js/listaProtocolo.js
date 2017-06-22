@@ -39,7 +39,8 @@ $(document).ready(function () {
         var id = $(this).attr('data-id-protocolo');
 
         $('#modal-excluir-protocolo').modal('toggle');
-
+        beforeSendDefult();
+        
         ajaxPostSubmit("/protocolo/remover", {id: id},
                 function () {
                     beforeSendDefult();

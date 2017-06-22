@@ -2,6 +2,9 @@ $(document).ready(function () {
 
     $("#conteudo").on("click", ".cadRequerente #btnSalvarRequerente", function () {
         if (validaCampos()) {
+            
+            beforeSendDefult();
+            
             ajaxPostSubmit("/requerente/salvar", $("form").serialize(),
                     function () {
                         beforeSendDefult();

@@ -8,6 +8,7 @@ $(document).ready(function () {
         $('#liRequerente').removeClass('active');
         $('#liOcorrencia').removeClass('active');
         $('#liProtocolo').removeClass('active');
+        $('#liGrafico').removeClass('active');
     };
     
     $("#aUsuario").on("click", function () {
@@ -36,6 +37,13 @@ $(document).ready(function () {
         limparMenuAtivo();
         $('#liProtocolo').addClass('active');
         ajaxLoad("/protocolo/lista", null);
+    });
+    
+    $("#aGrafico").on("click", function () {
+        
+        limparMenuAtivo();
+        $('#liGrafico').addClass('active');
+        ajaxLoad("/grafico/filtro", null);
     });
     
 });

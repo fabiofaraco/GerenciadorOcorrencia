@@ -15,6 +15,7 @@
         <link href=<c:url value="/css/cadastro.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/lista.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/menu-principal.css"/> rel="stylesheet"/>
+        <link href=<c:url value="/css/grafico.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/sb-admin.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/morris.css"/> rel="stylesheet"/>
         <link href=<c:url value="/font-awesome/css/font-awesome.min.css"/> rel="stylesheet"/>
@@ -62,19 +63,8 @@
                         <li id="liProtocolo">
                             <a href="javascript:void(0);" id="aProtocolo"><i class="fa fa-fw fa-folder"></i> Protocolos</a>
                         </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-pie-chart"></i> Relatórios <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="#">Certidão</a>
-                                </li>
-                                <li>
-                                    <a href="#">Dropdown Item</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                        <li id="liGrafico">
+                            <a href="javascript:void(0);" id="aGrafico"><i class="fa fa-fw fa-pie-chart"></i> Gráficos</a>
                         </li>
                     </ul>
                 </div>
@@ -108,4 +98,10 @@
     <script src=<c:url value="js/listaRequerente.js"/>></script>
     <script src=<c:url value="js/listaOcorrencia.js"/>></script>
     <script src=<c:url value="js/listaProtocolo.js"/>></script>
+    <script src=<c:url value="js/Chart.js"/>></script>
+    <script src=<c:url value="js/Chart.min.js"/>></script>
+    <script src=<c:url value="js/Chart.min.js"/>></script>
+    <script src=<c:url value="js/Chart.bundle.js"/>></script>
+    <script src=<c:url value="js/Chart.bundle.min.js"/>></script>
+    <script src=<c:url value="js/grafico.js"/>></script>
 </html>

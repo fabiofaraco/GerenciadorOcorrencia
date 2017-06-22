@@ -3,6 +3,8 @@ $(document).ready(function () {
     {
         if (validaCampos())
         {
+            beforeSendDefult();
+            
             ajaxPostSubmit("/ocorrencia/salvar", $("form").serialize(),
                     function ()
                     {

@@ -6,6 +6,7 @@ C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabi
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\CidadeRepository.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\NaturezaEventoRepository.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\ProtocoloService.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\util\Util.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\controller\ProtocoloController.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\serviceImpl\RequerenteServiceImpl.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\EnderecoService.java
@@ -28,12 +29,15 @@ C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabi
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\util\RespostaJson.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\UsuarioRepository.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\propertyEditor\NaturezaEventoPropertyEditor.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\util\Grafico.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\Usuario.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\Protocolo.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\ProtocoloRepository.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\RequerenteService.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\controller\GraficoController.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\GerenciadorOcorrenciaApplication.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\controller\OcorrenciaController.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\OcorrenciaRepository.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\serviceImpl\OcorrenciaServiceImpl.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\OcorrenciaService.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\query\QueryOcorrencia.java

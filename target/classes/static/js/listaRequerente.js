@@ -40,9 +40,11 @@ $(document).ready(function () {
     {
         var id = $(this).attr('data-id-requerente');
 
+        $('#modal-excluir-requerente').modal('toggle');
+        beforeSendDefult();
+        
         ajaxPostSubmit("/requerente/remover", {id: id},
                 function () {
-                    $('#modal-excluir-requerente').modal('toggle');
                     beforeSendDefult();
                 },
                 function () {

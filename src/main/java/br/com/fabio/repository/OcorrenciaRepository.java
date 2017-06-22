@@ -14,4 +14,7 @@ public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Long> {
     @Query(QueryOcorrencia.FILTRAR_POR_ID_E_NATUREZA_E_DATA_OCORRENCIA)
     public List<Ocorrencia> findByIdAndNaturezaIdAndDataOcorrencia(
             int id, int idNatureza, Date dataOcorrencia);
+    
+    @Query(QueryOcorrencia.FILTRAR_POR_NATUREZA_PERIODO)
+    public List<Ocorrencia> findByNaturezaEventoPeriodo(Date dtInicio, Date dtFim);
 }

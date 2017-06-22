@@ -1,0 +1,28 @@
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+}
+
+.chart-container-pie {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+}
+
+
+#chartPie,
+#chartBarLine {
+    display: none; 
+}
+
+@media (max-width: 768px) {
+    .chart-container-pie {
+        position: relative;
+        padding: 5px;
+        height: 30%;
+        width: 100%;
+    }    
+}

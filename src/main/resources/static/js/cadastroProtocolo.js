@@ -76,6 +76,8 @@ $(document).ready(function () {
     $("#conteudo").on("click", ".cadProtocolo #btnSalvar", function () {
         if (validaCampos())
         {
+            beforeSendDefult();
+            
             ajaxPostSubmit("/protocolo/salvar",
                     {
                         id: 0,

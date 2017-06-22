@@ -23,7 +23,7 @@ $(document).ready(function () {
                 error: fnError,
                 success: fnSuccess
             });
-        }, 150);
+        }, 500);
     };
 
 //  ----------------------------------------------------------------------------
@@ -138,7 +138,5 @@ $(document).ready(function () {
         $('.mascara-cpf').mask('999.999.999-99');
         $('.mascara-telefone').mask('(00) 0000-0000');
         $('.mascara-celular').mask('(00) 00000-0000');
-    }
-    ;
-
+    };
 });

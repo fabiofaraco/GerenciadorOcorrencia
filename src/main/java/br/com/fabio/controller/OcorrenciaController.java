@@ -8,6 +8,7 @@ import br.com.fabio.propertyEditor.CidadePropertyEditor;
 import br.com.fabio.propertyEditor.EstadoPropertyEditor;
 import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
+import br.com.fabio.util.Util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.text.SimpleDateFormat;
@@ -60,13 +61,14 @@ public class OcorrenciaController {
     }
 
     @RequestMapping("/carregaCidade")
-    public @ResponseBody String carregarCidades(int idEstado) {
+    public @ResponseBody
+    String carregarCidades(int idEstado) {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             return mapper.writeValueAsString(
                     service.getListaCidadesByIdEstado(idEstado));
-            
+
         } catch (JsonProcessingException e) {
             return "";
         }
@@ -81,35 +83,38 @@ public class OcorrenciaController {
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
         model.addAttribute("cidades",
                 service.getListaCidadesByIdEstado(objOcorrencia.getEndereco()
-                                .getCidade().getEstado().getId()));
+                        .getCidade().getEstado().getId()));
 
         return "cadastro-ocorrencia";
     }
 
     @RequestMapping("/filtrar")
-    public String filtrar(int id, int idNaturezaEvento, 
-            @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataOcorrencia, 
+    public String filtrar(int id, int idNaturezaEvento,
+            @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataOcorrencia,
             Model model) {
-        
-        model.addAttribute("ocorrencias",service.filtrar(id, idNaturezaEvento, dataOcorrencia));
+
+        model.addAttribute("ocorrencias", service.filtrar(id, idNaturezaEvento, dataOcorrencia));
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
         model.addAttribute("estados", service.getListaEstados());
         model.addAttribute("msgConsulta", "Não há dados para serem exibidos para esta consulta.");
         model.addAttribute("idFiltro", id == 0 ? "" : id);
         model.addAttribute("naturezaEventoFiltro", idNaturezaEvento);
-        model.addAttribute("dataOcorrenciaFiltro", dataOcorrencia);
-        
+        model.addAttribute("dataOcorrenciaFiltro", Util.converteDateToString(dataOcorrencia,
+                 Util.FORMATO_DATA_AMERICANO));
+
         return "lista-ocorrencia";
     }
 
     @RequestMapping("/salvar")
-    public @ResponseBody String salvarOcorrencia(Ocorrencia ocorrencia, Model model) {
+    public @ResponseBody
+    String salvarOcorrencia(Ocorrencia ocorrencia, Model model) {
         service.salvar(ocorrencia);
         return "Operacação realizada com sucesso!";
     }
 
     @RequestMapping("/remover")
-    public @ResponseBody String remover(Ocorrencia ocorrencia) {
+    public @ResponseBody
+    String remover(Ocorrencia ocorrencia) {
         service.deletar(ocorrencia);
         return "Ocorrência removida com sucesso.";
     }
