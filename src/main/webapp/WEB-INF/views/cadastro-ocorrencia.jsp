@@ -31,10 +31,25 @@
                         </div>
                     </div>
 
+                    <div class="col-md-2 col-sm-6">
+                        <div class="form-group">
+                            <label class="descricao" for="nrGrupamento">Grupamento</label>
+                            <input type="number" class="form-control" id="nrGrupamento" name="nrGrupamento" value="${ocorrencia.nrGrupamento}" />
+                        </div>
+                    </div>
+
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
-                            <label class="descricao" for="responsavel">Responsável</label>
-                            <input type="text" class="form-control" id="responsavel" name="responsavel" value="${ocorrencia.responsavel}" />
+                            <label class="descricao" for="tipoGrupamento">&nbsp;</label>
+
+                            <select class="form-control" id="tipoGrupamento" name="tipoGrupamento">
+                                <c:forEach items="${grupamentos}" var="grupamento">
+                                    <option value="${grupamento.id}" 
+                                            ${ocorrencia.tipoGrupamento.id == grupamento.id ? 'selected' : ''}>
+                                        <c:out value="${grupamento.descricao}"/>
+                                    </option>
+                                </c:forEach>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -47,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-5">
+                    <div class="col-md-2 col-sm-5">
                         <div class="form-group">
                             <label class="descricao" for="horaOcorrencia">Hora Ocorrência</label>
                             <input type="text" class="form-control mascara-hora" id="horaOcorrencia" name="horaOcorrencia" value="${ocorrencia.horaOcorrencia}" />
@@ -92,7 +107,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <div id="divCidade" class="form-group">
                             <label class="descricao" for="cidade">Cidade</label>
 
@@ -102,6 +117,16 @@
                                     <option value="${c.id}" ${ocorrencia.endereco.cidade.id == c.id? 'selected' : ''}><c:out value="${c.nome}"/></option>
                                 </c:forEach>
                             </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-5 col-sm-6">
+                        <div class="form-group">
+                            <label class="descricao" for="responsavel">Responsável</label>
+                            <input type="text" class="form-control" id="responsavel" name="responsavel" value="${ocorrencia.responsavel}" />
                         </div>
                     </div>
                 </div>

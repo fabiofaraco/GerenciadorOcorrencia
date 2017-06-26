@@ -18,6 +18,20 @@ import javax.persistence.TemporalType;
 @Table(name = "ocorrencia")
 public class Ocorrencia implements Serializable {
 
+    /**
+     * @return the tipoGrupamento
+     */
+    public TipoGrupamento getTipoGrupamento() {
+        return tipoGrupamento;
+    }
+
+    /**
+     * @param tipoGrupamento the tipoGrupamento to set
+     */
+    public void setTipoGrupamento(TipoGrupamento tipoGrupamento) {
+        this.tipoGrupamento = tipoGrupamento;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -34,6 +48,13 @@ public class Ocorrencia implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_natureza_evento")
     private NaturezaEvento naturezaEvento = new NaturezaEvento();
+
+    @Column(name = "nr_grupamento")
+    private int nrGrupamento;
+
+    @ManyToOne
+    @JoinColumn(name = "id_grupamento")
+    private TipoGrupamento tipoGrupamento = new TipoGrupamento();
 
     @Embedded
     private Endereco endereco = new Endereco();
@@ -137,5 +158,19 @@ public class Ocorrencia implements Serializable {
      */
     public void setHoraOcorrencia(String horaOcorrencia) {
         this.horaOcorrencia = horaOcorrencia;
+    }
+
+    /**
+     * @return the nrGrupamento
+     */
+    public int getNrGrupamento() {
+        return nrGrupamento;
+    }
+
+    /**
+     * @param nrGrupamento the nrGrupamento to set
+     */
+    public void setNrGrupamento(int nrGrupamento) {
+        this.nrGrupamento = nrGrupamento;
     }
 }

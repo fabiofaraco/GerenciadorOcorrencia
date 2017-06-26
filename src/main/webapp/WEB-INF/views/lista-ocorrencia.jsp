@@ -77,6 +77,13 @@
                                     </div>
 
                                     <div class="row">
+                                        <label class="titulo col-xs-4 col-sm-2">Grupamento:</label>
+                                        <div class="col-xs-8 col-sm-4">
+                                            <label class="descricao">${ocorrencia.nrGrupamento}ª ${ocorrencia.tipoGrupamento.descricao}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <label class="titulo col-xs-4 col-sm-2">Data:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao lbl-formata-data">${ocorrencia.dataOcorrencia}</label>

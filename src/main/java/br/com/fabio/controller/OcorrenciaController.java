@@ -2,10 +2,12 @@ package br.com.fabio.controller;
 
 import br.com.fabio.entity.Cidade;
 import br.com.fabio.entity.Estado;
+import br.com.fabio.entity.TipoGrupamento;
 import br.com.fabio.entity.NaturezaEvento;
 import br.com.fabio.entity.Ocorrencia;
 import br.com.fabio.propertyEditor.CidadePropertyEditor;
 import br.com.fabio.propertyEditor.EstadoPropertyEditor;
+import br.com.fabio.propertyEditor.TipoGrupamentoPropertyEditor;
 import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
 import br.com.fabio.util.Util;
@@ -39,6 +41,7 @@ public class OcorrenciaController {
         binder.registerCustomEditor(Date.class, "dataOcorrencia", new CustomDateEditor(dateFormat, true));
         binder.registerCustomEditor(Date.class, "dataOcorrenciaFiltro", new CustomDateEditor(dateFormat, true));
         binder.registerCustomEditor(NaturezaEvento.class, new NaturezaEventoPropertyEditor());
+        binder.registerCustomEditor(TipoGrupamento.class, new TipoGrupamentoPropertyEditor());
         binder.registerCustomEditor(Estado.class, new EstadoPropertyEditor());
         binder.registerCustomEditor(Cidade.class, new CidadePropertyEditor());
     }
@@ -55,6 +58,7 @@ public class OcorrenciaController {
     @RequestMapping("/cadastro")
     public String getCadastro(Ocorrencia ocorrencia, Model model) {
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
+        model.addAttribute("grupamentos", service.getListaGrupamentos());
         model.addAttribute("estados", service.getListaEstados());
 
         return "cadastro-ocorrencia";
@@ -81,6 +85,7 @@ public class OcorrenciaController {
         model.addAttribute("ocorrencia", objOcorrencia);
         model.addAttribute("estados", service.getListaEstados());
         model.addAttribute("naturezasEvento", service.getListaNaturezasEvento());
+        model.addAttribute("grupamentos", service.getListaGrupamentos());
         model.addAttribute("cidades",
                 service.getListaCidadesByIdEstado(objOcorrencia.getEndereco()
                         .getCidade().getEstado().getId()));

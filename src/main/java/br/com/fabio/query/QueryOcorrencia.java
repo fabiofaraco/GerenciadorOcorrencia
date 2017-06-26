@@ -19,6 +19,8 @@ public class QueryOcorrencia {
             = "select count(o), o.naturezaEvento.descricao\n"
             + "from Ocorrencia o\n"
             + "where o.dataOcorrencia between ?1 and ?2\n"
+            + "and o.nrGrupamento = ?3\n"
+            + "and o.tipoGrupamento.id = ?4\n"
             + "group by o.naturezaEvento.id \n"
             + "order by o.naturezaEvento.descricao \n";
 }

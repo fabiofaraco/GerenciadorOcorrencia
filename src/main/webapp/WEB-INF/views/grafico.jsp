@@ -21,19 +21,44 @@
                     <div class="panel-body">
                         <div class="row filtro">
 
-                            <div class="col-sm-3">
+                            <div class="col-md-2 col-sm-6">
                                 <div class="form-group">
                                     <input type="text" id="dtInicio" name="dtInicio" class="form-control mascara-data data" placeholder="Data de Início" value="${dtInicio}" />
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-md-2 col-sm-6">
                                 <div class="form-group">
                                     <input type="text" id="dtFim" name="dtFim" class="form-control mascara-data data" placeholder="Data Final" value="${dtFim}" />
                                 </div>
                             </div>
 
-                            <div class="col-md-3 col-sm-5">
+                            <div class="col-md-2 col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" 
+                                           min="1"
+                                           id="nrGrupamento" 
+                                           name="nrGrupamento" 
+                                           class="form-control" 
+                                           placeholder="Grupamento" 
+                                           value="${nrGrupamento}" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 col-sm-6">
+                                <div class="form-group">
+                                    <select class="form-control" id="grupamento" name="grupamento">
+                                        <c:forEach items="${grupamentos}" var="grupamento">
+                                            <option value="${grupamento.id}" 
+                                                    ${ocorrencia.grupamento.id == grupamento.id ? 'selected' : ''}>
+                                                <c:out value="${grupamento.descricao}"/>
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 col-sm-12">
                                 <div class="form-group">
                                     <select class="form-control" id="tipoGrafico" name="tipoGrafico">
                                         <option value=""><c:out value="Selecione o tipo de gráfico..."/></option>
@@ -45,7 +70,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-2">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <button type="button" id="btnFiltro" name="btnFiltro" class="btn botao-filtro btn-block btn-sm" >Filtrar </button>
                                 </div>
@@ -55,7 +80,7 @@
                 </div>
             </div>
         </div>
-                                    
+
         <div class="row">
             <div id="chartBarLine" class="chart-container">
                 <canvas id="charBarLine"></canvas>

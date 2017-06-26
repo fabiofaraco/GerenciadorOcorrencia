@@ -1,4 +1,5 @@
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\Ocorrencia.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\propertyEditor\TipoGrupamentoPropertyEditor.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\controller\UsuarioController.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\Requerente.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\controller\MenuController.java
@@ -11,6 +12,7 @@ C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabi
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\serviceImpl\RequerenteServiceImpl.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\EnderecoService.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\propertyEditor\PerfilPropertyEditor.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\TipoGrupamento.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\entity\NaturezaEvento.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\propertyEditor\CidadePropertyEditor.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\propertyEditor\EstadoPropertyEditor.java
@@ -41,3 +43,4 @@ C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabi
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\serviceImpl\OcorrenciaServiceImpl.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\service\OcorrenciaService.java
 C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\query\QueryOcorrencia.java
+C:\Users\ffara\Desktop\workspace\GerenciadorOcorrencia\src\main\java\br\com\fabio\repository\TipoGrupamentoRepository.java

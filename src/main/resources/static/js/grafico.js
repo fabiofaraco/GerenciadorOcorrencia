@@ -8,47 +8,59 @@ $(document).ready(function () {
         "#FFD700", "#5F9EA0", "#3CB371", "#8B4513"
     ];
 
+
+
     $("#conteudo").on("click", ".graficos #btnFiltro", function (e) {
         e.preventDefault();
 
-        ajaxPost("/grafico/filtroNaturezaPeriodo",
-                {
-                    dtInicio: $("#dtInicio").val(),
-                    dtFim: $("#dtFim").val(),
-                    tipoGrafico: $("#tipoGrafico").val()
-                },
-                function (data) {
+        if (validaCampos())
+        {
+            ajaxPost("/grafico/filtroNaturezaPeriodo",
+                    {
+                        dtInicio: $("#dtInicio").val(),
+                        dtFim: $("#dtFim").val(),
+                        nrGrupamento: $("#nrGrupamento").val(),
+                        grupamento: $("#grupamento").val(),
+                        tipoGrafico: $("#tipoGrafico").val()
+                    },
+                    function (data) {
+                        if (data !== "") {
+                            var obj = JSON.parse(data);
 
-                    if (data !== "") {
-                        var obj = JSON.parse(data);
-                        var dados = [];
-                        var labels = [];
-                        var cores = [];
+                            if (grafico !== null) {
+                                grafico.destroy();
+                            }
+                            
+                            if (obj.eixos.length !== 0)
+                            {
+                                var dados = [];
+                                var labels = [];
+                                var cores = [];
 
-                        for (var i = 0; i < obj.eixos.length; i++) {
-                            dados[i] = obj.eixos[i][0];
-                            labels[i] = obj.eixos[i][1];
-                            cores[i] = coresPadrao[i];
+                                for (var i = 0; i < obj.eixos.length; i++) {
+                                    dados[i] = obj.eixos[i][0];
+                                    labels[i] = obj.eixos[i][1];
+                                    cores[i] = coresPadrao[i];
+                                }
+
+                                var ctxBarLine = $("#charBarLine");
+                                var ctxPie = $("#charPie");
+
+                                if (obj.tipoGrafico === "bar" || obj.tipoGrafico === "line") {
+                                    $("#chartBarLine").css("display", "block");
+                                    $("#chartPie").css("display", "none");
+                                    grafico = new Chart(ctxBarLine, getConfig(dados, labels, cores, obj));
+                                } else {
+                                    $("#chartBarLine").css("display", "none");
+                                    $("#chartPie").css("display", "block");
+                                    grafico = new Chart(ctxPie, getConfig(dados, labels, cores, obj));
+                                }
+                            } else {
+                                exibirMensagemErro("Nenhuma ocorrência foi encontrada para esta consulta.");
+                            }
                         }
-
-                        var ctxBarLine = $("#charBarLine");
-                        var ctxPie = $("#charPie");
-
-                        if (grafico !== null) {
-                            grafico.destroy();
-                        }
-
-                        if (obj.tipoGrafico === "bar" || obj.tipoGrafico === "line") {
-                            $("#chartBarLine").css("display", "block");
-                            $("#chartPie").css("display", "none");
-                            grafico = new Chart(ctxBarLine, getConfig(dados, labels, cores, obj));
-                        } else {
-                            $("#chartBarLine").css("display", "none");
-                            $("#chartPie").css("display", "block");
-                            grafico = new Chart(ctxPie, getConfig(dados, labels, cores, obj));
-                        }
-                    }
-                });
+                    });
+        }
     });
 
     var getConfig = function (dados, labels, cores, obj) {
@@ -142,5 +154,48 @@ $(document).ready(function () {
         }
 
         return config;
+    };
+
+    var validaCampos = function ()
+    {
+        if (!criticar({valor: $("#dtInicio").val(), mensagem: "Campo Obrigatório: Data de Início"}))
+        {
+            return false;
+        }
+
+        if (!validaData($("#dtInicio").val()))
+        {
+            exibirMensagemErro("A Data de Início digitada não é válida.");
+            return false;
+        }
+
+        if (!criticar({valor: $("#dtFim").val(), mensagem: "Campo Obrigatório: Data Final"}))
+        {
+            return false;
+        }
+
+        if (!validaData($("#dtFim").val()))
+        {
+            exibirMensagemErro("A Data Final digitada não é válida.");
+            return false;
+        }
+
+        if (!validaOrdemData($("#dtInicio").val(), $("#dtFim").val()))
+        {
+            exibirMensagemErro("A Data Final deve ser maior que a Data Inicial.");
+            return false;
+        }
+
+        if (!criticar({valor: $("#nrGrupamento").val(), mensagem: "Campo Obrigatório: Grupamento"}))
+        {
+            return false;
+        }
+
+        if (!criticar({valor: $("#tipoGrafico").val(), mensagem: "Campo Obrigatório: Tipo de Gráfico"}))
+        {
+            return false;
+        }
+
+        return true;
     };
 });

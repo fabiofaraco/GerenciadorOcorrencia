@@ -4,7 +4,7 @@ $(document).ready(function () {
         if (validaCampos())
         {
             beforeSendDefult();
-            
+
             ajaxPostSubmit("/ocorrencia/salvar", $("form").serialize(),
                     function ()
                     {
@@ -53,14 +53,20 @@ $(document).ready(function () {
 //  ----------------------------------------------------------------------------
     var validaCampos = function ()
     {
-        if ($("#naturezaEvento").val() === "0")
+        if ($("#naturezaEvento").val() === "")
         {
             exibirMensagemErro("Campo Obrigatório: Natureza do Evento");
             return false;
         }
 
-        if (!criticar({valor: $("#responsavel").val(), mensagem: "Campo Obrigatório: Responsável"}))
+        if (!criticar({valor: $("#nrGrupamento").val(), mensagem: "Campo Obrigatório: Nr Grupamento"}))
         {
+            return false;
+        }
+
+        if ($("#nrGrupamento").val() === "0")
+        {
+            exibirMensagemErro("Campo Obrigatório: Nr Grupamento");
             return false;
         }
 
@@ -86,8 +92,6 @@ $(document).ready(function () {
             return false;
         }
 
-        
-
         if (!criticar({valor: $("#logradouro").val(), mensagem: "Campo Obrigatório: Endereço"}))
         {
             return false;
@@ -109,6 +113,11 @@ $(document).ready(function () {
         }
 
         if (!criticar({valor: $("#cidade").val(), mensagem: "Campo Obrigatório: Cidade"}))
+        {
+            return false;
+        }
+
+        if (!criticar({valor: $("#responsavel").val(), mensagem: "Campo Obrigatório: Responsável"}))
         {
             return false;
         }

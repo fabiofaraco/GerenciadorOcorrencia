@@ -2,6 +2,7 @@ package br.com.fabio.serviceImpl;
 
 import br.com.fabio.entity.Cidade;
 import br.com.fabio.entity.Estado;
+import br.com.fabio.entity.TipoGrupamento;
 import br.com.fabio.entity.NaturezaEvento;
 import br.com.fabio.entity.Ocorrencia;
 import br.com.fabio.repository.CidadeRepository;
@@ -14,6 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import br.com.fabio.repository.TipoGrupamentoRepository;
 
 @Service
 public class OcorrenciaServiceImpl implements OcorrenciaService {
@@ -22,6 +24,8 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
     private OcorrenciaRepository ocorrenciaRepository;
     @Autowired
     private NaturezaEventoRepository naturezaEventoRepository;
+    @Autowired
+    private TipoGrupamentoRepository grupamentoRepository;
     @Autowired
     private EstadoRepository estadoRepository;
     @Autowired
@@ -71,7 +75,26 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
     }
 
     @Override
-    public List<Ocorrencia> filtrarNaturezaEventoPeriodo(Date dtInicio, Date dtFim) {
-        return ocorrenciaRepository.findByNaturezaEventoPeriodo(dtInicio, dtFim);
+    public List<Ocorrencia> filtrarNaturezaEventoPeriodo(
+            Date dtInicio,
+            Date dtFim,
+            int nrGrupamento,
+            int grupamento) {
+        return ocorrenciaRepository.findByNaturezaEventoPeriodo(
+                dtInicio,
+                dtFim,
+                nrGrupamento,
+                grupamento);
+    }
+
+    @Override
+    public List<TipoGrupamento> getListaGrupamentos() {
+        return grupamentoRepository.
+                findAll(new Sort(Sort.Direction.ASC, "descricao"));
+    }
+
+    @Override
+    public TipoGrupamento findTipoGrupamentoById(int id) {
+        return grupamentoRepository.findTipoGrupamentoById(id);
     }
 }

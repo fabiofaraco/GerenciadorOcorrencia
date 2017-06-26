@@ -120,6 +120,22 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
+    validaOrdemData = function(dataInicio, dataFinal) 
+    {
+        var mesDiaAnoInicio = dataInicio.split("/");
+        var mesDiaAnoFim = dataFinal.split("/");
+        var dtInicioFormatada = mesDiaAnoInicio[2] + mesDiaAnoInicio[1] + mesDiaAnoInicio[0];
+        var dtFimFormatada = mesDiaAnoFim[2] + mesDiaAnoFim[1] + mesDiaAnoFim[0];
+        
+        if(dtInicioFormatada > dtFimFormatada) {
+            return false;
+        }
+        
+        return true;
+    };
+
+//  ----------------------------------------------------------------------------
+
     criticar = function (options)
     {
         if (options.valor === undefined
