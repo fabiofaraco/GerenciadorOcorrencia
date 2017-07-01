@@ -7,12 +7,9 @@ import br.com.fabio.repository.OcorrenciaRepository;
 import br.com.fabio.repository.ProtocoloRepository;
 import br.com.fabio.repository.RequerenteRepository;
 import br.com.fabio.service.ProtocoloService;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,5 +79,10 @@ public class ProtocoloServiceImpl implements ProtocoloService {
         SimpleDateFormat frmt = new SimpleDateFormat("yyyyMMdd");
 
         return frmt.format(new Date());
+    }
+
+    @Override
+    public Protocolo findById(int id) {
+        return protocoloRepository.findById(id);
     }
 }

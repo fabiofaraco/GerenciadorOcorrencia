@@ -4,6 +4,8 @@ import br.com.fabio.entity.Protocolo;
 import java.util.List;
 
 public interface ProtocoloService {
+
+    public Protocolo findById(int id);
     
     public Protocolo salvar(int id, int idRequerente, int idOcorrencia);
     

@@ -63,6 +63,9 @@
                         <li id="liProtocolo">
                             <a href="javascript:void(0);" id="aProtocolo"><i class="fa fa-fw fa-folder"></i> Protocolos</a>
                         </li>
+                        <li id="liCertidao">
+                            <a href="javascript:void(0);" id="aCertidao"><i class="fa fa-fw fa-file-pdf-o"></i> Certidão</a>
+                        </li>
                         <li id="liGrafico">
                             <a href="javascript:void(0);" id="aGrafico"><i class="fa fa-fw fa-pie-chart"></i> Gráficos</a>
                         </li>
@@ -104,4 +107,5 @@
     <script src=<c:url value="js/Chart.bundle.js"/>></script>
     <script src=<c:url value="js/Chart.bundle.min.js"/>></script>
     <script src=<c:url value="js/grafico.js"/>></script>
+        <script src=<c:url value="js/certidao.js"/>></script>
 </html>

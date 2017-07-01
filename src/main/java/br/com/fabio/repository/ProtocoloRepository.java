@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ProtocoloRepository extends JpaRepository<Protocolo, Long> {
 
+    public Protocolo findById(int id);
+    
     public Protocolo findByRequerenteIdAndOcorrenciaId(int idRequerente, int idOcorrencia);
     
     @Query(QueryProtocolo.FILTRAR_POR_REQUERENTE_CPF_OU_CODIGO_AUTENTICACAO)
