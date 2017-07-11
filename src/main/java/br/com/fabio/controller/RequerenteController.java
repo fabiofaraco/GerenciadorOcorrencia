@@ -6,6 +6,7 @@ import br.com.fabio.entity.Requerente;
 import br.com.fabio.propertyEditor.CidadePropertyEditor;
 import br.com.fabio.propertyEditor.EstadoPropertyEditor;
 import br.com.fabio.service.RequerenteService;
+import br.com.fabio.util.RespostaJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.text.SimpleDateFormat;
@@ -57,7 +58,8 @@ public class RequerenteController {
     }
 
     @RequestMapping("/carregaCidade")
-    public @ResponseBody String carregarCidades(int idEstado) {
+    public @ResponseBody
+    String carregarCidades(int idEstado) {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
@@ -91,21 +93,32 @@ public class RequerenteController {
     }
 
     @RequestMapping("/salvar")
-    public @ResponseBody String salvarUsuario(Requerente requerente, Model model) {
+    public @ResponseBody
+    String salvarUsuario(Requerente requerente, Model model) {
         service.salvar(requerente);
 
         return "Operacação realizada com sucesso!";
     }
 
     @RequestMapping("/remover")
-    public @ResponseBody String remover(Requerente requerente) {
-        service.deletar(requerente);
+    public @ResponseBody
+    String remover(Requerente requerente) {
 
-        return "Requerente removido com sucesso.";
+        try {
+            service.deletar(requerente);
+        } catch (RuntimeException ex) {
+            return RespostaJson.objectToJson(RespostaJson.MSG_ERRO,
+                    "Não foi possível excluir o requerente. "
+                    + "Verifique se ele já não está associado à uma ocorrência.");
+        }
+
+        return RespostaJson.objectToJson(RespostaJson.MSG_SUCESSO,
+                "Requerente removido com sucesso");
     }
 
     @RequestMapping("/validaCpf")
-    public @ResponseBody String validarCpf(String cpf, int id) {
+    public @ResponseBody
+    String validarCpf(String cpf, int id) {
 
         if (service.buscarPorCpf(cpf, id) != null) {
             return "O CPF digitado já está cadastrado no sistema";

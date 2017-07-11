@@ -10,8 +10,7 @@ $(document).ready(function () {
                     {
                         cpf: $("#cpfRequerente").val()
                     },
-                    function (data)
-                    {
+                    function (data) {
                         var objRequerente = jQuery.parseJSON(data);
 
                         if (objRequerente !== null) {
@@ -76,16 +75,11 @@ $(document).ready(function () {
     $("#conteudo").on("click", ".cadProtocolo #btnSalvar", function () {
         if (validaCampos())
         {
-            beforeSendDefult();
-            
             ajaxPostSubmit("/protocolo/salvar",
                     {
                         id: 0,
                         idOcorrencia: $("#evento").val(),
                         idRequerente: $("#idRequerente").val()
-                    },
-                    function () {
-                        beforeSendDefult();
                     },
                     function () {
                         errorDefault();
@@ -108,12 +102,12 @@ $(document).ready(function () {
         {
             return false;
         }
-        
+
         if (!criticar({valor: $("#evento").val(), mensagem: "Campo Obrigatório: Evento"}))
         {
             return false;
         }
-        
+
         return true;
     };
 });

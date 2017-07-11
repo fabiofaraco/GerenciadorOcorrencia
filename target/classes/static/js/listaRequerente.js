@@ -41,12 +41,8 @@ $(document).ready(function () {
         var id = $(this).attr('data-id-requerente');
 
         $('#modal-excluir-requerente').modal('toggle');
-        beforeSendDefult();
-        
+
         ajaxPostSubmit("/requerente/remover", {id: id},
-                function () {
-                    beforeSendDefult();
-                },
                 function () {
                     var msgErro = "Não foi possível excluir o requerente. "
                             + "Verifique se ele já não está associado à uma ocorrência.";
@@ -55,7 +51,7 @@ $(document).ready(function () {
                 },
                 function (data) {
 
-                    successDefault("/requerente/filtrar", data, {
+                    successDefaultJson("/requerente/filtrar", data, {
                         nomeFiltro: $("#nomeFiltro").val(),
                         cpfFiltro: $("#cpfFiltro").val()
                     });

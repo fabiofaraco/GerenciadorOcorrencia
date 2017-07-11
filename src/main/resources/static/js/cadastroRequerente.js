@@ -2,13 +2,7 @@ $(document).ready(function () {
 
     $("#conteudo").on("click", ".cadRequerente #btnSalvarRequerente", function () {
         if (validaCampos()) {
-            
-            beforeSendDefult();
-            
             ajaxPostSubmit("/requerente/salvar", $("form").serialize(),
-                    function () {
-                        beforeSendDefult();
-                    },
                     function () {
                         errorDefault();
                     },
@@ -34,12 +28,17 @@ $(document).ready(function () {
     $("#conteudo").on("focusout", ".cadRequerente #cpfRequerente", function (e) {
         e.preventDefault();
 
-        ajaxPost("/requerente/validaCpf", {cpf: $("#cpfRequerente").val(), id: $("#id").val()}, function (data) {
-            if (data !== "") {
-                $("#cpfRequerente").val("");
-                exibirMensagemErro(data);
-            }
-        });
+        ajaxPost("/requerente/validaCpf",
+                {
+                    cpf: $("#cpfRequerente").val(),
+                    id: $("#id").val()
+                },
+                function (data) {
+                    if (data !== "") {
+                        $("#cpfRequerente").val("");
+                        exibirMensagemErro(data);
+                    }
+                });
     });
 
 //  ----------------------------------------------------------------------------

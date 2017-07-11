@@ -42,13 +42,8 @@ $(document).ready(function () {
         var id = $(this).attr('data-id-usuario');
 
         $('#modal-excluir-usuario').modal('toggle');
-        beforeSendDefult();
 
         ajaxPostSubmit("/usuario/remover", {id: id},
-                function ()
-                {
-                    beforeSendDefult();
-                },
                 function ()
                 {
                     errorDefault();

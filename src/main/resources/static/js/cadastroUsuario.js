@@ -1,13 +1,7 @@
 $(document).ready(function () {
     $("#conteudo").on("click", ".cadUsuario #btnSalvar", function () {
         if (validaCampos()) {
-            
-            beforeSendDefult();
-            
             ajaxPostSubmit("/usuario/salvar", $("form").serialize(),
-                    function () {
-                        beforeSendDefult();
-                    },
                     function () {
                         errorDefault();
                     },
@@ -32,7 +26,7 @@ $(document).ready(function () {
 
     $("#conteudo").on("focusout", ".cadUsuario #cpf", function (e) {
         e.preventDefault();
-        
+
         ajaxPost("/usuario/validaCpf", {cpf: $("#cpf").val(), id: $("#id").val()}, function (data) {
             if (data !== "") {
                 $("#cpf").val("");

@@ -7,6 +7,7 @@ import br.com.fabio.repository.PerfilRepository;
 import br.com.fabio.repository.UsuarioRepository;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -24,6 +25,9 @@ public class UsuarioController {
     @Autowired
     private PerfilRepository perfilRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
     @InitBinder
     public void customizeBinding(WebDataBinder binder) {
         binder.registerCustomEditor(Perfil.class, new PerfilPropertyEditor());
@@ -66,6 +70,8 @@ public class UsuarioController {
 
     @RequestMapping("/salvar")
     public @ResponseBody String salvarUsuario(Usuario usuario, Model model) {
+        usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
+        
         usuarioRepository.save(usuario);
         
         return "Operacação realizada com sucesso!";

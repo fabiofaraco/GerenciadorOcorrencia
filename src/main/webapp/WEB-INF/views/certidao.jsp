@@ -26,7 +26,7 @@
                                            id="nrAutenticacao" 
                                            name="nrAutenticacao" 
                                            class="form-control" 
-                                           placeholder="Número de Autenticação" 
+                                           placeholder="Código de Autenticação" 
                                            value="${nrAutenticacao}" />
                                 </div>
                             </div>
@@ -46,5 +46,7 @@
                 </div>
             </div>
         </div>
+
+        <div id="relatorioCertidao"></div>
     </div>
 </div>

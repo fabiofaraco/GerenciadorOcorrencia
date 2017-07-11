@@ -39,12 +39,8 @@ $(document).ready(function () {
         var id = $(this).attr('data-id-ocorrencia');
 
         $('#modal-excluir-ocorrencia').modal('toggle');
-        beforeSendDefult();
-
+        
         ajaxPostSubmit("/ocorrencia/remover", {id: id},
-                function () {
-                    beforeSendDefult();
-                },
                 function () {
                     var msgErro = "Não foi possível excluir a ocorrência. "
                             + "Verifique se ela já não está associado à um requerente.";
@@ -53,7 +49,7 @@ $(document).ready(function () {
                 },
                 function (data) {
 
-                    successDefault("/ocorrencia/filtrar", data, {
+                    successDefaultJson("/ocorrencia/filtrar", data, {
                         id: $("#idFiltro").val() === "" ? 0 : $("#idFiltro").val(),
                         idNaturezaEvento: $("#naturezaEventoFiltro").val(),
                         dataOcorrencia: $("#dataOcorrenciaFiltro").val()

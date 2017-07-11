@@ -1,25 +1,48 @@
 /* global moment */
 
 $(document).ready(function () {
-    var contextPath = $("#contextPath").val();
 
-    ajaxLoad = function (url, parametros)
-    {
-        $(".load-img").fadeIn();
-        $("#conteudo").load(contextPath + url, parametros, carregarScriptPagina);
-    };
+    var contextPath = $("#contextPath").val();
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
 
 //  ----------------------------------------------------------------------------
 
-    ajaxPostSubmit = function (url, parametros, fnBeforeSend, fnError, fnSuccess)
-    {
+    ajaxLoad = function (url, parametros) {
+        beforeSendDefult();
+
+        $.ajax({
+            type: "POST",
+            url: contextPath + url,
+            data: parametros,
+            dataType: "html",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            error: function () {
+                errorDefault();
+            },
+            success: function (html) {
+                $("#conteudo").html(html);
+                carregarScriptPagina();
+            }
+        });
+
+    };
+//  ----------------------------------------------------------------------------
+
+    ajaxPostSubmit = function (url, parametros, fnError, fnSuccess) {
+        beforeSendDefult();
+
         setTimeout(function () {
             $.ajax({
                 type: "POST",
                 url: contextPath + url,
                 data: parametros,
                 dataType: "html",
-                beforeSend: fnBeforeSend,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
                 error: fnError,
                 success: fnSuccess
             });
@@ -28,15 +51,16 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    ajaxPost = function (url, parametros, fnSuccess)
-    {
+    ajaxPost = function (url, parametros, fnSuccess) {
         $.ajax({
             type: "POST",
             url: contextPath + url,
             data: parametros,
             dataType: "html",
-            error: function ()
-            {
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            error: function () {
                 errorDefault();
             },
             success: fnSuccess
@@ -45,34 +69,56 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    beforeSendDefult = function ()
-    {
+    beforeSendDefult = function () {
         $(".load-img").fadeIn();
     };
 
 //  ----------------------------------------------------------------------------
 
-    successDefault = function (url, msg, parametros)
-    {
-        $("#conteudo").load(contextPath + url, parametros, function () {
-            carregarScriptPagina();
-            exibirMensagemSucesso(msg);
+    successDefault = function (url, msg, parametros) {
+        $.ajax({
+            type: "POST",
+            url: contextPath + url,
+            data: parametros,
+            dataType: "html",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            error: function () {
+                errorDefault();
+            },
+            success: function (html) {
+                $("#conteudo").html(html);
+                carregarScriptPagina();
+                exibirMensagemSucesso(msg);
+            }
         });
     };
 
 //  ----------------------------------------------------------------------------
 
-    successDefaultJson = function (url, msg, parametros)
-    {
+    successDefaultJson = function (url, msg, parametros) {
         var objMsg = JSON.parse(msg);
         var MSG_SUCESSO = 1;
 
         if (objMsg.id === MSG_SUCESSO) {
-            $("#conteudo").load(contextPath + url, parametros, function () {
-                carregarScriptPagina();
-                exibirMensagemSucesso(objMsg.mensagem);
+            $.ajax({
+                type: "POST",
+                url: contextPath + url,
+                data: parametros,
+                dataType: "html",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                error: function () {
+                    errorDefault();
+                },
+                success: function (html) {
+                    $("#conteudo").html(html);
+                    carregarScriptPagina();
+                    exibirMensagemSucesso(objMsg.mensagem);
+                }
             });
-
         } else {
             $(".load-img").fadeOut();
             exibirMensagemErro(objMsg.mensagem);
@@ -81,9 +127,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-
-    errorDefault = function (msgErro)
-    {
+    errorDefault = function (msgErro) {
         $(".load-img").fadeOut();
 
         if (msgErro === null || msgErro === undefined || $.trim(msgErro) === "")
@@ -97,8 +141,7 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    function carregarScriptPagina()
-    {
+    carregarScriptPagina = function () {
         $(".load-img").fadeOut();
 
         $(".data").datepicker({

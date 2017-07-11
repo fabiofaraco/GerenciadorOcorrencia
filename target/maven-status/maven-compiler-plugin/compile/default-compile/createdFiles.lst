@@ -6,11 +6,13 @@ br\com\fabio\repository\NaturezaEventoRepository.class
 br\com\fabio\controller\RequerenteController.class
 br\com\fabio\entity\Estado.class
 br\com\fabio\propertyEditor\TipoGrupamentoPropertyEditor.class
+br\com\fabio\security\SecurityWebConfig.class
 br\com\fabio\query\QueryOcorrencia.class
 br\com\fabio\repository\UsuarioRepository.class
 br\com\fabio\serviceImpl\ProtocoloServiceImpl.class
 br\com\fabio\query\QueryUsuario.class
 br\com\fabio\propertyEditor\NaturezaEventoPropertyEditor.class
+br\com\fabio\service\CertidaoService.class
 br\com\fabio\util\Util.class
 br\com\fabio\entity\Requerente.class
 br\com\fabio\entity\Usuario.class
@@ -27,6 +29,7 @@ br\com\fabio\controller\UsuarioController.class
 br\com\fabio\entity\Endereco.class
 br\com\fabio\entity\Ocorrencia.class
 br\com\fabio\repository\PerfilRepository.class
+br\com\fabio\controller\LoginController.class
 br\com\fabio\controller\OcorrenciaController.class
 br\com\fabio\repository\ProtocoloRepository.class
 br\com\fabio\query\QueryProtocolo.class
@@ -39,9 +42,12 @@ br\com\fabio\repository\RequerenteRepository.class
 br\com\fabio\repository\CidadeRepository.class
 br\com\fabio\controller\GraficoController.class
 br\com\fabio\propertyEditor\PerfilPropertyEditor.class
+br\com\fabio\serviceImpl\CertidaoServiceImpl.class
 br\com\fabio\entity\TipoGrupamento.class
 br\com\fabio\entity\Perfil.class
+br\com\fabio\security\SpringWebSecurityInitializer.class
 br\com\fabio\util\RespostaJson.class
+br\com\fabio\serviceImpl\UserDetailsServiceImpl.class
 br\com\fabio\entity\Cidade.class
 br\com\fabio\entity\Telefone.class
 br\com\fabio\propertyEditor\EstadoPropertyEditor.class

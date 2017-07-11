@@ -15,4 +15,6 @@ public interface ProtocoloRepository extends JpaRepository<Protocolo, Long> {
     @Query(QueryProtocolo.FILTRAR_POR_REQUERENTE_CPF_OU_CODIGO_AUTENTICACAO)
     public List<Protocolo> findByRequerenteCpfAndCodigoAutenticacao(
             String cpfRequerente, String condigoAutenticacao);
+    
+    public Protocolo findBycodigoAutenticacao(String codigoAutenticacao);
 }

@@ -10,6 +10,7 @@ import br.com.fabio.propertyEditor.EstadoPropertyEditor;
 import br.com.fabio.propertyEditor.TipoGrupamentoPropertyEditor;
 import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
+import br.com.fabio.util.RespostaJson;
 import br.com.fabio.util.Util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -120,8 +121,16 @@ public class OcorrenciaController {
     @RequestMapping("/remover")
     public @ResponseBody
     String remover(Ocorrencia ocorrencia) {
-        service.deletar(ocorrencia);
-        return "Ocorrência removida com sucesso.";
+        try {
+            service.deletar(ocorrencia);
+        } catch (RuntimeException ex) {
+            return RespostaJson.objectToJson(RespostaJson.MSG_ERRO,
+                    "Não foi possível excluir a ocorrência. "
+                    + "Verifique se ela já não está associada a um requerente.");
+        }
+
+        return RespostaJson.objectToJson(RespostaJson.MSG_SUCESSO,
+                "Ocorrência removida com sucesso");
     }
 
 }

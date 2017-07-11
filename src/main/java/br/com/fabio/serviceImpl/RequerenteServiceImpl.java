@@ -60,8 +60,12 @@ public class RequerenteServiceImpl implements RequerenteService {
 
     @Override
     public void deletar(Requerente requerente) {
+        try {
+            requerenteRepository.delete(requerente);
+        } catch (RuntimeException ex) {
+            throw ex;
+        }
         
-        requerenteRepository.delete(requerente);
     }
 
 }

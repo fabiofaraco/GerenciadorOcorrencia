@@ -3,19 +3,11 @@ $(document).ready(function () {
     {
         if (validaCampos())
         {
-            beforeSendDefult();
-
             ajaxPostSubmit("/ocorrencia/salvar", $("form").serialize(),
-                    function ()
-                    {
-                        beforeSendDefult();
-                    },
-                    function ()
-                    {
+                    function () {
                         errorDefault();
                     },
-                    function (data)
-                    {
+                    function (data) {
                         successDefault("/ocorrencia/filtrar", data, {
                             id: $("#id").val(),
                             idNaturezaEvento: $("#naturezaEvento").val(),

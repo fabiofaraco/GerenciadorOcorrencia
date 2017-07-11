@@ -7,7 +7,9 @@
     <head>
         <title>Menu Principal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+        <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+        
         <link href=<c:url value="/bootstrap/css/bootstrap.min.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/jquery-ui-css/jquery-ui.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/jquery-ui-css/jquery.datetimepicker.min.css"/> rel="stylesheet"/>
@@ -40,7 +42,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Fábio Faraco <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a id="aLogout" href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a id="aLogout" href="javascript:void(0);"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -78,7 +80,7 @@
             <div class="load-img">
                 <img id="loading" src=<c:url value="img/load.gif"/>>                
             </div>           
-
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </body>
 
@@ -107,5 +109,5 @@
     <script src=<c:url value="js/Chart.bundle.js"/>></script>
     <script src=<c:url value="js/Chart.bundle.min.js"/>></script>
     <script src=<c:url value="js/grafico.js"/>></script>
-        <script src=<c:url value="js/certidao.js"/>></script>
+    <script src=<c:url value="js/certidao.js"/>></script>
 </html>
