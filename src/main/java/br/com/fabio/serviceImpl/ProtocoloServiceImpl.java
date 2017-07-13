@@ -85,4 +85,9 @@ public class ProtocoloServiceImpl implements ProtocoloService {
     public Protocolo findById(int id) {
         return protocoloRepository.findById(id);
     }
+
+    @Override
+    public Protocolo autenticar(String cdAutenticacao) {
+        return protocoloRepository.findBycodigoAutenticacao(cdAutenticacao);
+    }
 }

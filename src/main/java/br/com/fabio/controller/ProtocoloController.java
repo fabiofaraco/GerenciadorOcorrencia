@@ -1,12 +1,6 @@
 package br.com.fabio.controller;
 
-import br.com.fabio.entity.Cidade;
-import br.com.fabio.entity.Estado;
-import br.com.fabio.entity.NaturezaEvento;
 import br.com.fabio.entity.Protocolo;
-import br.com.fabio.propertyEditor.CidadePropertyEditor;
-import br.com.fabio.propertyEditor.EstadoPropertyEditor;
-import br.com.fabio.propertyEditor.NaturezaEventoPropertyEditor;
 import br.com.fabio.service.ProtocoloService;
 import br.com.fabio.service.RequerenteService;
 import br.com.fabio.serviceImpl.OcorrenciaServiceImpl;
@@ -114,4 +108,16 @@ public class ProtocoloController
 
         return "Protocolo removido com sucesso.";
     }
+    
+    @RequestMapping("/autenticar")
+    public @ResponseBody String autenticar(String cdAuntenticacao) {
+        Protocolo protocolo = service.autenticar(cdAuntenticacao);
+        
+        if(protocolo == null) {
+            return "";
+        }
+        
+        return RespostaJson.objectToJson(protocolo);
+    }
+            
 }

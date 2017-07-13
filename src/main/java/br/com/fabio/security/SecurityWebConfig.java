@@ -28,11 +28,13 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/css/**", "/js/**", "/bootstrap/**",
                             "/font-awesome/**", "/img/**").permitAll()
+                    .antMatchers("/protocolo/autenticar").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/login")
                         .defaultSuccessUrl("/menu")
+                        .failureUrl("/login?error=true")
                     .permitAll()
                 .and()
                     .logout()

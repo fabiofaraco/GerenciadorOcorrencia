@@ -12,4 +12,6 @@ public interface ProtocoloService {
     public List<Protocolo> filtrar(String cpfRequerente, String condigoAutenticacao);
     
     public void deletar(Protocolo protocolo);
+    
+    public Protocolo autenticar(String cdAutenticacao);
 }
