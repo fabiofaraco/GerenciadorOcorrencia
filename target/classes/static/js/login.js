@@ -29,9 +29,28 @@ $(document).ready(function () {
                 },
                 function (data) {
                     $(".load-img").fadeOut();
-                    //alert(data);
+                    $("#cdAutenticacao").val("");
+                    
+                    if (data !== null && data !== "") {
+                        var resposta = JSON.parse(data);
 
-                    $('#modal-autenticado').modal('toggle');
+                        $("#lblNomeRequerente").html(resposta.obj.requerente.nome);
+                        $("#lblCpfRequerente").html(resposta.obj.requerente.cpf);
+
+                        $("#lblEventoOcorrencia").html(resposta.obj.ocorrencia.id);
+                        $("#lblNaturezaOcorrencia").html(resposta.obj.ocorrencia.naturezaEvento.descricao);
+                        $("#lblResponsavelOcorrencia").html(resposta.obj.ocorrencia.responsavel);
+
+                        $("#lblEnderecoOcorrencia").html(resposta.obj.ocorrencia.endereco.logradouro
+                                + ", " + resposta.obj.ocorrencia.endereco.complemento);
+                        $("#lblBairroOcorrencia").html(resposta.obj.ocorrencia.endereco.bairro);
+                        $("#lblCidadeOcorrencia").html(resposta.obj.ocorrencia.endereco.cidade.nome);
+                        $("#lblEstadoOcorrencia").html(resposta.obj.ocorrencia.endereco.cidade.estado.nome);
+
+                        $('#modal-autenticado').modal('toggle');
+                    } else {
+                        exibirMensagemErro("O número de autenticação digitado não foi encontrado.");
+                    }
                 }
         );
     });

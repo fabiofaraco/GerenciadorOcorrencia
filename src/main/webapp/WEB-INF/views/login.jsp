@@ -83,17 +83,78 @@
                 </div>
 
                 <div class="modal fade" id="modal-autenticado" role="dialog">
-                    <div class="modal-dialog modal-sm">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h3 class="modal-title titulo">Inserir o código de Autenticação</h3>
+                                <h3 class="modal-title titulo">Autenticado</h3>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <label class="titulo"> Dados do Requerente </label>
+                                        <h3 class="titulo"> Dados do Requerente </h3>
                                     </div>           
+                                </div>
+
+                                <div class="row">
+                                    <label class="titulo col-xs-4 col-md-2">Nome:</label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblNomeRequerente" class="descricao"></label>
+                                    </div>
+
+                                    <label class="titulo col-xs-4 col-md-2">CPF:</label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblCpfRequerente" class="descricao"></label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3 class="titulo"> Dados da Ocorrência </h3>
+                                    </div>           
+                                </div>
+
+                                <div class="row">
+                                    <label class="titulo col-xs-4 col-md-2">Nº Evento:</label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblEventoOcorrencia" class="descricao"></label>
+                                    </div>
+
+                                    <label class="titulo col-xs-4 col-md-2">Natureza:</label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblNaturezaOcorrencia" class="descricao"></label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="titulo col-xs-4 col-md-2">Responsável: </label>
+                                    <div class="col-xs-8 col-md-10">
+                                        <label id="lblResponsavelOcorrencia" class="descricao"></label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="titulo col-xs-4 col-md-2">Endereço: </label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblEnderecoOcorrencia" class="descricao"></label>
+                                    </div>
+
+                                    <label class="titulo col-xs-4 col-md-2">Bairro: </label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblBairroOcorrencia" class="descricao"></label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label class="titulo col-xs-4 col-md-2">Cidade: </label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblCidadeOcorrencia" class="descricao"></label>
+                                    </div>
+
+                                    <label class="titulo col-xs-4 col-md-2">Estado: </label>
+                                    <div class="col-xs-8 col-md-4">
+                                        <label id="lblEstadoOcorrencia" class="descricao"></label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
