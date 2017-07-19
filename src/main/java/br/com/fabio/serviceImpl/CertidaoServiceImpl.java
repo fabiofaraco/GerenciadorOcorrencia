@@ -96,7 +96,7 @@ public class CertidaoServiceImpl implements CertidaoService {
                     .getRealPath("/img/logo-bombeiro.png")));
 
             imageQrCode = new FileInputStream(QRCode
-                    .from(nrAutenticacao).to(ImageType.JPG).file());
+                    .from("http://192.168.0.102:8080/autenticar?nrAutenticacao=" + nrAutenticacao).to(ImageType.JPG).file());
         } catch (FileNotFoundException ex) {
             throw ex;
         }

@@ -65,9 +65,15 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h3 class="modal-title titulo">Inserir o código de Autenticação</h3>
+                                <h3 class="modal-title titulo">Autenticar</h3>
                             </div>
                             <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="msgErroAutenticacao"></div>
+                                    </div>
+                                </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <input type="text" class="form-control" id="cdAutenticacao" name="cdAutenticacao" placeholder="Código de Autenticação">
@@ -82,6 +88,42 @@
                     </div>
                 </div>
 
+                <div class="modal fade" id="modal-autenticacao-certidao" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title titulo">Gerar Certidão</h3>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="msgErroCertidao"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <input type="text" class="form-control" id="cdAutenticacaoCertidao" name="cdAutenticacaoCertidao" placeholder="Código de Autenticação">
+                                    </div>           
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="relatorioCertidao"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn botao btn-gerar">Gerar</button>
+                                <button type="button" class="btn botao" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                
                 <div class="modal fade" id="modal-autenticado" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
