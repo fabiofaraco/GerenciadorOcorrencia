@@ -39,7 +39,8 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Fábio Faraco <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  ${usuarioLogado} <b class="caret"></b></a>
+                        
                         <ul class="dropdown-menu">
                             <li>
                                 <a id="aLogout" href="javascript:void(0);"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -50,27 +51,11 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li id="liMenu">
-                            <a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> Home</a>
-                        </li>
-                        <li id="liUsuario">
-                            <a href="javascript:void(0);" id="aUsuario"><i class="fa fa-fw fa-user"></i> Usuários</a>
-                        </li>
-                        <li id="liRequerente">
-                            <a href="javascript:void(0);" id="aRequerente"><i class="fa fa-fw fa-users"></i> Requerentes</a>
-                        </li>
-                        <li id="liOcorrencia">
-                            <a href="javascript:void(0);" id="aOcorrencia"><i class="fa fa-fw fa-ambulance"></i> Ocorrências</a>
-                        </li>
-                        <li id="liProtocolo">
-                            <a href="javascript:void(0);" id="aProtocolo"><i class="fa fa-fw fa-folder"></i> Protocolos</a>
-                        </li>
-                        <li id="liCertidao">
-                            <a href="javascript:void(0);" id="aCertidao"><i class="fa fa-fw fa-file-pdf-o"></i> Certidão</a>
-                        </li>
-                        <li id="liGrafico">
-                            <a href="javascript:void(0);" id="aGrafico"><i class="fa fa-fw fa-pie-chart"></i> Gráficos</a>
-                        </li>
+                        <c:forEach items="${menu}" var="menu">
+                            <li id="${menu.liId}">
+                                <a href="javascript:void(0);" id="${menu.aId}" data-selected="${menu.selected}"><i class="${menu.icone}"></i> ${menu.descricao}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </nav>

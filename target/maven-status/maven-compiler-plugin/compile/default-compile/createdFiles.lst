@@ -8,6 +8,7 @@ br\com\fabio\entity\Estado.class
 br\com\fabio\propertyEditor\TipoGrupamentoPropertyEditor.class
 br\com\fabio\security\SecurityWebConfig.class
 br\com\fabio\query\QueryOcorrencia.class
+br\com\fabio\util\Constantes.class
 br\com\fabio\repository\UsuarioRepository.class
 br\com\fabio\serviceImpl\ProtocoloServiceImpl.class
 br\com\fabio\query\QueryUsuario.class
@@ -22,6 +23,7 @@ br\com\fabio\service\RequerenteService.class
 br\com\fabio\repository\OcorrenciaRepository.class
 br\com\fabio\util\Grafico.class
 br\com\fabio\serviceImpl\OcorrenciaServiceImpl.class
+br\com\fabio\service\MenuService.class
 br\com\fabio\repository\TipoGrupamentoRepository.class
 br\com\fabio\controller\MenuController.class
 br\com\fabio\query\QueryRequerente.class
@@ -31,11 +33,13 @@ br\com\fabio\entity\Ocorrencia.class
 br\com\fabio\repository\PerfilRepository.class
 br\com\fabio\controller\LoginController.class
 br\com\fabio\controller\OcorrenciaController.class
+br\com\fabio\entity\Menu.class
 br\com\fabio\repository\ProtocoloRepository.class
 br\com\fabio\query\QueryProtocolo.class
 br\com\fabio\serviceImpl\RequerenteServiceImpl.class
 br\com\fabio\service\OcorrenciaService.class
 br\com\fabio\entity\NaturezaEvento.class
+br\com\fabio\serviceImpl\MenuServiceImpl.class
 br\com\fabio\repository\EstadoRepository.class
 br\com\fabio\propertyEditor\CidadePropertyEditor.class
 br\com\fabio\repository\RequerenteRepository.class

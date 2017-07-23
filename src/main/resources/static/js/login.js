@@ -3,14 +3,18 @@ $(document).ready(function () {
         if ($("#error").val() !== "") {
             exibirMensagemErro($("#error").val());
         }
+        
+        $(".load-img").fadeOut();
     };
 
 //  ----------------------------------------------------------------------------
 
-    $("#btnLogin").on("click", function (e) {
+    $("#btnLogin").on("click", function (e) 
+    {
         e.preventDefault;
 
         if (validaCampos()) {
+            $(".load-img").fadeIn();
             $("#frm").attr("action", "login");
             $("#frm").submit();
         }
@@ -20,6 +24,8 @@ $(document).ready(function () {
 
     $("#btnAutenticacao").on("click", function ()
     {
+        $("#cdAutenticacao").val("");
+        $("#msgErroAutenticacao").html("");
         $('#modal-autenticacao').modal('show');
     });
 
@@ -30,6 +36,15 @@ $(document).ready(function () {
         $("#cdAutenticacaoCertidao").val("");
         $("#relatorioCertidao").html("");
         $('#modal-autenticacao-certidao').modal('show');
+    });
+
+//  ----------------------------------------------------------------------------
+
+    $("#btnEsqueceuSenha").on("click", function ()
+    {
+        $("#emailRedefinicao").val("");
+        $("#msgErroRedefinir").html("");
+        $('#modal-redefinir-senha').modal('show');
     });
 
 //  ----------------------------------------------------------------------------
@@ -52,6 +67,8 @@ $(document).ready(function () {
                             
                             var resposta = JSON.parse(data);
                             
+                            $("#lblDataOcorrencia").html(formataData(resposta.obj.ocorrencia.dataOcorrencia));
+                            $("#lblHoraOcorrencia").html(resposta.obj.ocorrencia.horaOcorrencia);
                             $("#lblNomeRequerente").html(resposta.obj.requerente.nome);
                             $("#lblCpfRequerente").html(resposta.obj.requerente.cpf);
 
@@ -63,7 +80,7 @@ $(document).ready(function () {
                                     + ", " + resposta.obj.ocorrencia.endereco.complemento);
                             $("#lblBairroOcorrencia").html(resposta.obj.ocorrencia.endereco.bairro);
                             $("#lblCidadeOcorrencia").html(resposta.obj.ocorrencia.endereco.cidade.nome);
-                            $("#lblEstadoOcorrencia").html(resposta.obj.ocorrencia.endereco.cidade.estado.nome);
+                            $("#lblEstadoOcorrencia").html(resposta.obj.ocorrencia.endereco.cidade.estado.sigla);
 
                             $('#modal-autenticado').modal('toggle');
                         } else {
@@ -84,14 +101,16 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    $(".btn-close-msg").on("click", function () {
+    $(".btn-close-msg").on("click", function () 
+    {
         $("#success").fadeOut(1000);
         $("#danger").fadeOut(1000);
     });
 
 //  ----------------------------------------------------------------------------
 
-    validaCampos = function () {
+    validaCampos = function () 
+    {
         if (!criticar({valor: $("#username").val(), mensagem: "Campo Obrigatório: E-mail"})) {
             return false;
         }
@@ -105,7 +124,8 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    $(".btn-gerar").on("click", function (e) {
+    $(".btn-gerar").on("click", function (e) 
+    {
         e.preventDefault();
 
         $("#relatorioCertidao").html("");
@@ -141,6 +161,53 @@ $(document).ready(function () {
             $("#relatorioCertidao").append(
                     '<br/><p class="text-danger">'
                     + 'Campo Obrigatório: Código de Autenticação'
+                    + '</p>');
+        }
+    });
+    
+//  ----------------------------------------------------------------------------
+
+    $(".btn-redefinir").on("click", function (e) 
+    {
+        e.preventDefault();
+
+        $("#msgErroRedefinir").html("");
+
+        if ($.trim($("#emailRedefinicao").val()) !== "") {
+            ajaxPostSubmit("/redefinirSenha",
+                    {
+                        email: $("#emailRedefinicao").val()
+                    },
+                    function () {
+                        errorDefault();
+                    },
+                    function (data) {
+                        $("#msgErroRedefinir").html("");
+
+                        if (data === "1") {
+                            $("#msgErroRedefinir").append(
+                                    '<br/><p class="text-danger">'
+                                    + 'Endereço de e-mail não encontrado'
+                                    + '</p>');
+                        } else if (data === "2") {
+
+                            $("#msgErroRedefinir").append(
+                                    '<br/><p class="text-danger">'
+                                    + 'Ocorreu um erro inesperado ao enviar o e-mail.'
+                                    + '</p>');
+                        } else {
+                            $("#msgErroRedefinir").append(
+                                    '<br/><p class="text-success">'
+                                    + 'Sua senha foi redefinida. Um e-mail com a nova senha foi enviado.'
+                                    + '</p>');
+                        }
+
+                        $(".load-img").fadeOut();
+                    });
+        } else {
+            $("#msgErroRedefinir").append(
+                    '<br/><p class="text-danger">'
+                    + 'Campo Obrigatório: E-mail'
                     + '</p>');
         }
     });

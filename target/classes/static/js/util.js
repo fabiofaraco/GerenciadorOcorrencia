@@ -120,17 +120,17 @@ $(document).ready(function () {
 
 //  ----------------------------------------------------------------------------
 
-    validaOrdemData = function(dataInicio, dataFinal) 
+    validaOrdemData = function (dataInicio, dataFinal)
     {
         var mesDiaAnoInicio = dataInicio.split("/");
         var mesDiaAnoFim = dataFinal.split("/");
         var dtInicioFormatada = mesDiaAnoInicio[2] + mesDiaAnoInicio[1] + mesDiaAnoInicio[0];
         var dtFimFormatada = mesDiaAnoFim[2] + mesDiaAnoFim[1] + mesDiaAnoFim[0];
-        
-        if(dtInicioFormatada > dtFimFormatada) {
+
+        if (dtInicioFormatada > dtFimFormatada) {
             return false;
         }
-        
+
         return true;
     };
 
@@ -245,13 +245,35 @@ $(document).ready(function () {
             {
                 return false;
             }
-            
-            if(minuto < 0 || minuto > 59)
+
+            if (minuto < 0 || minuto > 59)
             {
                 return false;
             }
         }
-        
+
         return true;
+    };
+
+    formataLabelData = function () {        
+        $('label.lbl-formata-data').each(function () {
+            if ($(this).html() !== "") {
+                var anoMesDia = $(this).html().split("-");
+
+                $(this).html($.datepicker.formatDate('dd/mm/yy',
+                        new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2])));
+            }
+        });
+    };
+    
+    formataData = function (data) {        
+            if (data !== "") {
+                var anoMesDia = data.split("-");
+
+                data = $.datepicker.formatDate('dd/mm/yy',
+                        new Date(anoMesDia[0], anoMesDia[1] - 1, anoMesDia[2]));
+            }
+            
+            return data;
     };
 });

@@ -63,7 +63,7 @@
                     <c:forEach items="${protocolos}" var="protocolo">
                         <a href="javascript:void(0);" class="list-group-item list-group-style">
                             <div class="row">
-                                <div class="col-sm-9 col-md-10">
+                                <div class="col-xs-12">
                                     <div class="row">
                                         <label class="titulo col-xs-12 col-sm-2">Autenticação:</label>
                                         <div class="col-xs-12 col-sm-10">
@@ -99,15 +99,6 @@
                                                 ${protocolo.ocorrencia.dataOcorrencia}
                                             </label>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-3 col-md-2">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-link btn-excluir-protocolo" 
-                                                data-id-protocolo="${protocolo.id}"
-                                                data-toggle="modal">
-                                            <span class="glyphicon glyphicon-trash"></span> Remover
-                                        </button>
                                     </div>
                                 </div>
                             </div>

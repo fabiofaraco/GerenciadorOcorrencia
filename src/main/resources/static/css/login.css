@@ -1,37 +1,9 @@
-h1{
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em;
-    text-align: center;
-    color: #337ab7;
+body {
+    background-color: #FFFFFF;
 }
 
-.btn-info{
-    background-color: #B78433;
-    border-color: #6A4F23;
-}
-
-.btn-info:hover{
-    background-color: #6A4F23;
-    border-color: #6A4F23;
-}
-
-.btn-gerar-certidao{
-    margin-top: 30px;
-}
-
-.btn-primary{
-    background-color: #337ab7;
-}
-
-.btn-primary:hover{
-    background-color: #13426A;
-    border-color: #13426A;
-}
-
-.login-wrapper{
-    padding-top: 20px;
-    background-color: #eee;
-    border: 1px solid #ccc;
+#principal{
+    margin-top: 5%; 
 }
 
 .load-img {
@@ -48,6 +20,11 @@ h1{
     left:50%;
     margin-top: -50px;
     margin-left: -50px;
+}
+
+.titulo-principal
+{
+    color:#990000 !important;
 }
 
 .titulo
@@ -67,7 +44,6 @@ h1{
     font-size: 18px;
     border-radius: 8px;
 }
-
 .botao:hover,
 .botao:focus {
     background-color: #006B6B;
@@ -75,29 +51,20 @@ h1{
     color:#FFFFFF;
 }
 
-.botao-filtro
-{
-    background-color: #009999;
+.botao-principal {
+    background-color: #990000;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 18px;
     border-radius: 8px;
 }
 
-.botao-filtro:hover,
-.botao-filtro:focus 
-{
-    background-color: #006B6B;
-    border-color: #006B6B;
+.botao-principal:hover,
+.botao-principal:focus {
+    background-color: #660000;
+    border-color: #660000;
     color:#FFFFFF;
 }
 
-
-@media (min-width: 768px){
-    h1{
-        font-size: 2.3em;
-    }
-
-    .btn-info{
-        margin-top: 30px;
-    }
+.sm {
+    font-size: 13px !important;
 }

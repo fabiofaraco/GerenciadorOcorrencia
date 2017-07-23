@@ -14,7 +14,6 @@
         <link href=<c:url value="/css/jquery-ui-css/jquery-ui.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/mensagem.css"/> rel="stylesheet"/>
         <link href=<c:url value="/font-awesome/css/font-awesome.min.css"/> rel="stylesheet"/>
-        <link href=<c:url value="/css/mensagem.css"/> rel="stylesheet"/>
         <link href=<c:url value="/css/login.css"/> rel="stylesheet"/>        
 
     </head>
@@ -22,20 +21,20 @@
         <div class="container-fluid">
             <form id="frm" name="frm" method="post">
                 <br/>
-                <div class="well col-sm-offset-2 col-sm-8">
+                <div class="col-sm-offset-2 col-sm-8">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2 class="titulo">Autenticado</h2>
-                            <hr/>
+                            <h1 class="titulo text-center">Autenticado</h1>
                         </div>           
                     </div>
 
                     <div class="row">
                         <div class="col-xs-12">
-                            <h4 class="titulo"> Dados do Requerente </h4>
+                            <hr/>
+                            <h3 class="titulo"> Dados do Requerente </h3>
                         </div>           
                     </div>
-                    
+
                     <div class="row">
                         <label class="titulo col-xs-4 col-md-2">Nome:</label>
                         <div class="col-xs-8 col-md-4">
@@ -54,18 +53,25 @@
 
                     <div class="row">
                         <div class="col-xs-12">
-                            <h4 class="titulo"> Dados da Ocorrência </h4>
+                            <hr/>
+                            <h3 class="titulo"> Dados da Ocorrência </h3>
                         </div>           
                     </div>
 
                     <div class="row">
-                        <label class="titulo col-xs-4 col-md-2">Nº Evento:</label>
+                        <label class="titulo col-xs-4 col-md-2">Data:</label>
                         <div class="col-xs-8 col-md-4">
+                            <label class="descricao lbl-formata-data">
+                                ${protocolo.ocorrencia.dataOcorrencia}
+                            </label>
+
                             <label class="descricao">
-                                ${protocolo.ocorrencia.id}
+                                ${protocolo.ocorrencia.horaOcorrencia}
                             </label>
                         </div>
+                    </div>        
 
+                    <div class="row">
                         <label class="titulo col-xs-4 col-md-2">Natureza:</label>
                         <div class="col-xs-8 col-md-4">
                             <label class="descricao">
@@ -115,6 +121,15 @@
                             </label>
                         </div>
                     </div>
+                            
+                    <hr/>   
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-4 col-sm-offset-4">
+                            <button type="button" id="btnLogin"
+                                    class="btn botao-principal btn-block btn-login">Login</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="load-img">
@@ -133,5 +148,6 @@
     <script src=<c:url value="bootstrap/js/bootstrap.min.js"/>></script>
     <script src=<c:url value="js/mensagem.js"/>></script>
     <script src=<c:url value="js/util.js"/>></script>
+    <script src=<c:url value="js/autenticado.js"/>></script>
     <script src=<c:url value="js/ajaxUtil.js"/>></script>
 </html>

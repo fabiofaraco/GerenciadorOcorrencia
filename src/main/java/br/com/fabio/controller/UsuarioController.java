@@ -4,7 +4,7 @@ import br.com.fabio.entity.Perfil;
 import br.com.fabio.entity.Usuario;
 import br.com.fabio.propertyEditor.PerfilPropertyEditor;
 import br.com.fabio.repository.PerfilRepository;
-import br.com.fabio.repository.UsuarioRepository;
+import br.com.fabio.service.UsuarioService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
+    private UsuarioService usuarioService;
+    
     @Autowired
     private PerfilRepository perfilRepository;
 
@@ -50,7 +50,7 @@ public class UsuarioController {
 
     @RequestMapping("/filtrar")
     public String filtrar(String nomeFiltro, String cpfFiltro, Model model) {
-        model.addAttribute("usuarios", usuarioRepository.findByNomeOrCpf(nomeFiltro, cpfFiltro));
+        model.addAttribute("usuarios", usuarioService.findByNomeOrCpf(nomeFiltro, cpfFiltro));
         model.addAttribute("msgConsulta", "Não há dados para serem exibidos para esta consulta.");
         model.addAttribute("nomeFiltro", nomeFiltro);
         model.addAttribute("cpfFiltro", cpfFiltro);
@@ -60,7 +60,7 @@ public class UsuarioController {
 
     @RequestMapping("/carregar")
     public String carregar(int id, String nomeFiltro, String cpfFiltro, Model model) {
-        model.addAttribute("usuario", usuarioRepository.findById(id));
+        model.addAttribute("usuario", usuarioService.findById(id));
         model.addAttribute("perfis", perfilRepository.findAll());
         model.addAttribute("nomeFiltro", nomeFiltro);
         model.addAttribute("cpfFiltro", cpfFiltro);
@@ -72,21 +72,21 @@ public class UsuarioController {
     public @ResponseBody String salvarUsuario(Usuario usuario, Model model) {
         usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
         
-        usuarioRepository.save(usuario);
+        usuarioService.salvar(usuario);
         
         return "Operacação realizada com sucesso!";
     }
     
     @RequestMapping("/remover")
     public @ResponseBody String remover(Usuario usuario) {
-        usuarioRepository.delete(usuario);
+        usuarioService.deletar(usuario);
 
         return "Requerente removido com sucesso.";
     }
     
     @RequestMapping("/validaCpf")
     public @ResponseBody String validarCpf(String cpf, int id) {
-        if (usuarioRepository.buscarPorCpf(cpf, id) != null) {
+        if (usuarioService.buscarPorCpf(cpf, id) != null) {
             return "O CPF digitado já está cadastrado no sistema.";
         }
         return "";

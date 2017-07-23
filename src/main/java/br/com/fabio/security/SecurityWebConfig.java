@@ -24,7 +24,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http                
                 .authorizeRequests()
                     .antMatchers("/css/**", "/js/**", "/bootstrap/**",
                             "/font-awesome/**", "/img/**").permitAll()
@@ -32,6 +32,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/certidao/validarAutenticacao").permitAll()
                     .antMatchers("/certidao/certidaoOcorrencia").permitAll()
                     .antMatchers("/autenticar").permitAll()
+                    .antMatchers("/redefinirSenha").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -47,6 +48,12 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                 .and()
                     .rememberMe();
+                /*.and()
+                    .sessionManagement()
+                        .invalidSessionUrl("/login?timeout")
+                        .maximumSessions(1)
+                        .expiredUrl("/login?timeout")
+                        .maxSessionsPreventsLogin(true);*/
     }           
                     
 

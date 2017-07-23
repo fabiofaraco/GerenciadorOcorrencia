@@ -22,11 +22,20 @@
         <div class="container-fluid">
             <form id="frm" name="frm" method="post">
                 <br/>
-                <div class="well col-sm-offset-2 col-sm-8">
+                <div class="col-sm-offset-2 col-sm-8">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h3 class="titulo"> Não Autenticado </h3>
+                            <h1 class="titulo-principal text-center"> O código de autenticação digitado não existe. </h1>
                         </div>           
+                    </div>
+                    
+                    <hr/>
+                    
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-4 col-sm-offset-4">
+                            <button type="button" id="btnLogin"
+                                    class="btn botao-principal btn-block btn-login">Login</button>
+                        </div>
                     </div>
                 </div>
 
@@ -45,6 +54,6 @@
     <script src=<c:url value="js/jquery/jquery-ui.min.js"/>></script>
     <script src=<c:url value="bootstrap/js/bootstrap.min.js"/>></script>
     <script src=<c:url value="js/mensagem.js"/>></script>
-    <script src=<c:url value="js/util.js"/>></script>
+    <script src=<c:url value="js/autenticado.js"/>></script>
     <script src=<c:url value="js/ajaxUtil.js"/>></script>
 </html>

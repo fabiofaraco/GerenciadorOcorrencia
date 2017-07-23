@@ -12,8 +12,6 @@
 
         <div class="well">
             <div class="form-group">
-                <label class="titulo">Dados da Ocorrência</label>
-
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
