@@ -20,7 +20,7 @@
                 <div id="filtro" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div class="row filtro">
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <div class="form-group">
                                     <input type="text" 
                                            id="nrAutenticacao" 
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <button type="button" 
                                             id="btnGerarCertidao" 

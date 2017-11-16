@@ -39,7 +39,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario buscarPorCpf(String cpf, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return usuarioRepository.buscarPorCpf(cpf, id);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                     .parse(email);
 
             message.setRecipients(Message.RecipientType.TO, toUser);
-            message.setSubject("Teste de e-mail");
+            message.setSubject("Senha Redefinida");
             message.setText("Sua nova senha é: " + novaSenha);
 
             Transport.send(message);

@@ -3,6 +3,8 @@ br\com\fabio\service\EnderecoService.class
 br\com\fabio\GerenciadorOcorrenciaApplication.class
 br\com\fabio\entity\Protocolo.class
 br\com\fabio\repository\NaturezaEventoRepository.class
+br\com\fabio\serviceImpl\UsuarioServiceImpl$1.class
+br\com\fabio\service\UsuarioService.class
 br\com\fabio\controller\RequerenteController.class
 br\com\fabio\entity\Estado.class
 br\com\fabio\propertyEditor\TipoGrupamentoPropertyEditor.class
@@ -55,3 +57,4 @@ br\com\fabio\serviceImpl\UserDetailsServiceImpl.class
 br\com\fabio\entity\Cidade.class
 br\com\fabio\entity\Telefone.class
 br\com\fabio\propertyEditor\EstadoPropertyEditor.class
+br\com\fabio\serviceImpl\UsuarioServiceImpl.class

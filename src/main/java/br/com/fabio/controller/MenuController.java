@@ -1,6 +1,5 @@
 package br.com.fabio.controller;
 
-import br.com.fabio.entity.Usuario;
 import br.com.fabio.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,7 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
     
-    @RequestMapping("menu")
+    @RequestMapping({"", "/"})
     public String getFormMenu(Model model) {
         
         Object usuarioLogado = SecurityContextHolder.getContext()
@@ -32,7 +31,7 @@ public class MenuController {
         return "menu-principal";
     }
     
-    @RequestMapping("logout")
+    @RequestMapping("/logout")
     public String getFormLogin() {
         return "redirect:login?logout";
     }

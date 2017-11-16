@@ -24,7 +24,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http                
+        http    
                 .authorizeRequests()
                     .antMatchers("/css/**", "/js/**", "/bootstrap/**",
                             "/font-awesome/**", "/img/**").permitAll()
@@ -37,23 +37,17 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin()
                         .loginPage("/login")
-                        .defaultSuccessUrl("/menu")
+                        .defaultSuccessUrl("/")
                         .failureUrl("/login?error=true")
                     .permitAll()
                 .and()
                     .logout()
                         .logoutUrl("/logout")
-                        .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 .and()
-                    .rememberMe();
-                /*.and()
-                    .sessionManagement()
-                        .invalidSessionUrl("/login?timeout")
-                        .maximumSessions(1)
-                        .expiredUrl("/login?timeout")
-                        .maxSessionsPreventsLogin(true);*/
+                    .rememberMe()
+                        .alwaysRemember(true);
     }           
                     
 

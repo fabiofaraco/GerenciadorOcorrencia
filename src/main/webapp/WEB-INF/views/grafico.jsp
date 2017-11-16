@@ -61,7 +61,7 @@
                             <div class="col-md-2 col-sm-12">
                                 <div class="form-group">
                                     <select class="form-control" id="tipoGrafico" name="tipoGrafico">
-                                        <option value=""><c:out value="Selecione o tipo de gráfico..."/></option>
+                                        <option value=""><c:out value="Tipo de gráfico..."/></option>
                                         <option value="bar"><c:out value="Barra"/></option>
                                         <option value="line"><c:out value="Linha"/></option>
                                         <option value="pie"><c:out value="Pizza"/></option>

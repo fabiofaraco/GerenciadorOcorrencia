@@ -57,8 +57,8 @@ public class ProtocoloServiceImpl implements ProtocoloService {
 
         String codigo = converteDataHoje()
                 + converteData(requerente.getDataNascimento())
-                + converteData(ocorrencia.getDataOcorrencia())
                 + requerente.getId()
+                + converteData(ocorrencia.getDataOcorrencia())
                 + ocorrencia.getId();
 
         return codigo;
@@ -76,7 +76,7 @@ public class ProtocoloServiceImpl implements ProtocoloService {
     }
 
     private String converteDataHoje() {
-        SimpleDateFormat frmt = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat frmt = new SimpleDateFormat("MMyyyydd");
 
         return frmt.format(new Date());
     }

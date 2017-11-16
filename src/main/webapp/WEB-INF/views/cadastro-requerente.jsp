@@ -73,7 +73,7 @@
                         <select class="form-control" id="estadoCpf" name="endereco.cidade.estado">
                             <option value=""><c:out value="Selecione..."/></option>
                             <c:forEach items="${estados}" var="es">
-                                <option value="${es.id}" ${requerente.endereco.cidade.estado.id == es.id? 'selected' : ''}><c:out value="${es.sigla} - ${es.nome}"/></option>
+                                <option value="${es.id}" ${requerente.endereco.cidade.estado.id == es.id? 'selected' : ''}><c:out value="${es.nome}"/></option>
                             </c:forEach>
                         </select>
                     </div>

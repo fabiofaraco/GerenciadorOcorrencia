@@ -111,14 +111,14 @@
                                         <label class="titulo col-xs-4 col-sm-2">Tel Res:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">
-                                                ${requerente.telefone.residencial} 
+                                                ${requerente.telefone.residencial}&nbsp
                                             </label>
                                         </div>
 
                                         <label class="titulo col-xs-4 col-sm-2">Tel Cel:</label>
                                         <div class="col-xs-8 col-sm-4">
                                             <label class="descricao">
-                                                ${requerente.telefone.celular} 
+                                                ${requerente.telefone.celular}&nbsp 
                                             </label>
                                         </div>
                                     </div>
